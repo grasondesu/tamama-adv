@@ -22,3 +22,4 @@
 # OSごとのゴミファイル
 .DS_Store
 Thumbs.db
+Library/
