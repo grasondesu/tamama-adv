@@ -1,0 +1,52 @@
+﻿<Properties StartupConfiguration="{F821431E-0D94-F35A-A6ED-41C09F3614C9}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Manager/Camera/CameraManager.cs">
+    <Files>
+      <File FileName="Assets/Traps/RioJr/Scripts/rioJr.cs" Line="24" Column="6" />
+      <File FileName="Assets/Manager/Main Manager/Scripts/MainManager.cs" Line="27" Column="1" />
+      <File FileName="Assets/Character/Main Character/Scripts/PlayerController.cs" Line="70" Column="10" />
+      <File FileName="Assets/Character/Enemy/Scripts/Enemy.cs" Line="63" Column="40" />
+      <File FileName="Assets/Manager/Camera/CameraManager.cs" Line="28" Column="48" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="tamama-adv" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Character" expanded="True">
+                <Node name="Enemy" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="Main Character" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Manager" expanded="True">
+                <Node name="Camera" expanded="True">
+                  <Node name="CameraManager.cs" selected="True" />
+                </Node>
+                <Node name="Main Manager" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Traps" expanded="True">
+                <Node name="RioJr" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c3ef6752-dfbe-4636-a490-fe09fb3808e8" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
