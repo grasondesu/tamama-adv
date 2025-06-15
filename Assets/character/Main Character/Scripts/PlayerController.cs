@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Header("MainManager")]
     public MainManager MainManager;
 
-
     void Start()
     {
         // コンポーネント参照取得
@@ -41,6 +40,16 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody2D.velocity = new Vector2(inputDirection.x * moveSpeed, rigidbody2D.velocity.y);
         anim.SetBool("Run", inputDirection.x != 0.0f);
+
+        if (Mathf.Abs(inputDirection.x) > 0.1f && !jumpFlg)
+        {
+            AudioManager.Instance.PlayDashSE();
+        }
+        else
+        {
+            // 止まった or ジャンプ中 → 足音を止める
+            AudioManager.Instance.StopDashSE();
+        }
     }
 
     private void LookMoveDirec()
@@ -64,6 +73,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Arrow" || collision.gameObject.tag == "DeathLine")
         {
+            // ヒットSE再生
+            AudioManager.Instance.PlayHitSE();
             Dead();
         }
         else if (collision.gameObject.tag == "Goal")
@@ -88,10 +99,19 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         jumpFlg = true;
         anim.SetBool("Jump", jumpFlg);
+
+        // ジャンプSEを再生
+        AudioManager.Instance.PlayJumpSE();
     }
 
     public void Dead()
     {
+        // プレイヤーを削除
         Destroy(gameObject);
+        // 死亡時ヒット音を鳴らしてヒット音が鳴り終わったらゲームオーバーBGM再生
+        AudioManager.Instance.PlayHitSEAndThenGameOverBGM();
+        // 念のため足音を止めておく（確実）
+        AudioManager.Instance.StopDashSE();
     }
+
 }
