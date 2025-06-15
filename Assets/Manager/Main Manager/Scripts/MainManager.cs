@@ -13,10 +13,13 @@ public class MainManager : MonoBehaviour
 
     private GameObject player;
 
+    //private GameObject BGMManager;
+
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>().gameObject;
+        AudioManager.Instance.PlayCourseBGM();
     }
 
     // Update is called once per frame
@@ -29,11 +32,24 @@ public class MainManager : MonoBehaviour
     {
         if (player != null) return;
 
+        // ゲームオーバージングルを再生
+        // if (gameOverBGM != null)
+        // {
+        //     bgmManager.PlayGameOverBGM();
+        // }
+        // UI表示
+
         gameOverUI.SetActive(true);
+        //bgmManager.PlayGameOverBGM();
     }
 
     public void ShowGameClearUI()
     {
+        // 足音などを止める（プレイヤーが動けなくなるなら）
+        AudioManager.Instance.StopDashSE();
+
+        // ゲームクリアBGMを再生
+        AudioManager.Instance.PlayGameClearBGM();
         gameClearUI.SetActive(true);
     }
 }
