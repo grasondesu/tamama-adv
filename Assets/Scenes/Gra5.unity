@@ -817,7 +817,7 @@ PrefabInstance:
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1527604396}
+      objectReference: {fileID: 0}
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _angleDegree
       value: 215
@@ -1078,7 +1078,7 @@ PrefabInstance:
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1527604396}
+      objectReference: {fileID: 0}
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _angleDegree
       value: 90
@@ -2316,7 +2316,7 @@ PrefabInstance:
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1527604396}
+      objectReference: {fileID: 0}
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _angleDegree
       value: 300
@@ -3056,7 +3056,7 @@ PrefabInstance:
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1527604396}
+      objectReference: {fileID: 0}
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _angleDegree
       value: 180
@@ -3074,17 +3074,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
---- !u!114 &1527604396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7053251534522655560, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
-  m_PrefabInstance: {fileID: 1675166818}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d716ca844cd04d94a9ecf61302a5e67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1531085888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3205,7 +3194,7 @@ PrefabInstance:
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1527604396}
+      objectReference: {fileID: 0}
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _angleDegree
       value: 225
@@ -3581,10 +3570,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1222685969255435270, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.96
+      objectReference: {fileID: 0}
     - target: {fileID: 2210514229806902433, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3772755000648553103, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
+      propertyPath: MainManager
+      value: 
+      objectReference: {fileID: 1788643729}
     - target: {fileID: 4994052322525773249, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.47
@@ -3864,7 +3861,7 @@ PrefabInstance:
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1527604396}
+      objectReference: {fileID: 0}
     - target: {fileID: 4339363724357243830, guid: d4c9fefe98bf2418bae9bfc266269b9e, type: 3}
       propertyPath: _angleDegree
       value: 328
@@ -4039,7 +4036,7 @@ MonoBehaviour:
   rio: {fileID: 783768161}
   _posx: 63.5
   _posy: -0.45
-  _player: {fileID: 1527604396}
+  _player: {fileID: 0}
 --- !u!4 &1820988904
 Transform:
   m_ObjectHideFlags: 0
@@ -4441,7 +4438,7 @@ PrefabInstance:
     - target: {fileID: 666517417788864144, guid: 76fa6ea3dfd7e4bd095b8829bce9d3e0, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 1527604396}
+      objectReference: {fileID: 0}
     - target: {fileID: 666517417788864144, guid: 76fa6ea3dfd7e4bd095b8829bce9d3e0, type: 3}
       propertyPath: _angleDegree
       value: 270
@@ -4717,7 +4714,7 @@ MonoBehaviour:
   rio: {fileID: 500969077}
   _posx: 27.4
   _posy: -0.25
-  _player: {fileID: 1527604396}
+  _player: {fileID: 0}
 --- !u!4 &2094353929
 Transform:
   m_ObjectHideFlags: 0
