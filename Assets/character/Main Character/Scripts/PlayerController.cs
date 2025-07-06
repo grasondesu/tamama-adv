@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         LookMoveDirec();
-
     }
 
     private void Move()
@@ -54,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private void LookMoveDirec()
     {
+        Debug.Log($"LookMoveDirec called, inputDirection.x = {inputDirection.x}");
         if (inputDirection.x > 0.0f)
         {
             transform.eulerAngles = Vector3.zero;
@@ -84,7 +84,6 @@ public class PlayerController : MonoBehaviour
             GetComponent<PlayerInput>().enabled = false;
             GetComponent<Animator>().enabled = false;
         }
-
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -114,4 +113,21 @@ public class PlayerController : MonoBehaviour
         AudioManager.Instance.StopDashSE();
     }
 
+    // UIボタン用の移動入力
+    public void SetMoveDirection(float x)
+    {
+        inputDirection = new Vector2(x, 0);
+    }
+
+    // UIボタン用のジャンプ処理
+    public void JumpByButton()
+    {
+        if (jumpFlg) return;
+
+        rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+        jumpFlg = true;
+        anim.SetBool("Jump", jumpFlg);
+
+        AudioManager.Instance.PlayJumpSE();
+    }
 }
