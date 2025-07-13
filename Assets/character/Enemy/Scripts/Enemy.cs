@@ -60,7 +60,7 @@ public class WingPoopMan : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "InvisibleFloor")
         {
             rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             jumpFlg = false;

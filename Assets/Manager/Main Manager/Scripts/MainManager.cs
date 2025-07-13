@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
+    public static MainManager Instance;
+
     [SerializeField, Header("ゲームオーバーUI")]
     private GameObject gameOverUI;
 
@@ -12,8 +14,17 @@ public class MainManager : MonoBehaviour
     private GameObject gameClearUI;
 
     private GameObject player;
+    public bool isGameCleared = false;
 
     //private GameObject BGMManager;
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +56,11 @@ public class MainManager : MonoBehaviour
 
     public void ShowGameClearUI()
     {
-        // 足音などを止める（プレイヤーが動けなくなるなら）
         AudioManager.Instance.StopDashSE();
-
-        // ゲームクリアBGMを再生
         AudioManager.Instance.PlayGameClearBGM();
         gameClearUI.SetActive(true);
+
+        isGameCleared = true;
+        Debug.Log("🎉 isGameCleared = true に設定された！");
     }
 }

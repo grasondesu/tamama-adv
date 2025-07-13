@@ -11,6 +11,7 @@ TagManager:
   - DeathLine
   - Floor
   - TransparentWall
+  - InvisibleFloor
   layers:
   - Default
   - TransparentFX
@@ -19,9 +20,9 @@ TagManager:
   - Water
   - UI
   - TransparentWall
-  - 
-  - 
-  - 
+  - InvisibleFloor
+  - Enemy
+  - Cannon
   - 
   - 
   - 
