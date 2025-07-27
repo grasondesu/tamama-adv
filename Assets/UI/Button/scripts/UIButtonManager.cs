@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class UIButtonManager : MonoBehaviour
 {
@@ -27,17 +26,21 @@ public class UIButtonManager : MonoBehaviour
 
     private bool isLeftPressed = false;
     private bool isRightPressed = false;
-
     void Update()
     {
-        if (isLeftPressed)
-            player.SetMoveDirection(-1f);
-        else if (isRightPressed)
-            player.SetMoveDirection(1f);
-        else
-            player.SetMoveDirection(0f);
-    }
+        if (isLeftPressed || isRightPressed)
+        {
+            float dir = 0f;
+            if (isLeftPressed) dir = -1f;
+            if (isRightPressed) dir = 1f;
 
+            player.SetMoveDirection(dir, true); // UI入力として伝える
+        }
+        else
+        {
+            player.SetMoveDirection(0f, false); // UI入力なし（キーボード優先）
+        }
+    }
     // 左ボタン押下・離す
     public void OnLeftDown()
     {
