@@ -12,6 +12,7 @@ TagManager:
   - Floor
   - TransparentWall
   - InvisibleFloor
+  - MeteoDestroyWall
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - InvisibleFloor
   - Enemy
   - Cannon
-  - 
-  - 
+  - Meteo
+  - Goal
   - 
   - 
   - 

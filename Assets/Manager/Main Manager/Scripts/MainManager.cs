@@ -15,6 +15,7 @@ public class MainManager : MonoBehaviour
 
     private GameObject player;
     public bool isGameCleared = false;
+    public bool isGameOvered = false;
 
     //private GameObject BGMManager;
 
@@ -42,16 +43,8 @@ public class MainManager : MonoBehaviour
     private void ShowGameOverUI()
     {
         if (player != null) return;
-
-        // ゲームオーバージングルを再生
-        // if (gameOverBGM != null)
-        // {
-        //     bgmManager.PlayGameOverBGM();
-        // }
-        // UI表示
-
         gameOverUI.SetActive(true);
-        //bgmManager.PlayGameOverBGM();
+        isGameOvered = true;
     }
 
     public void ShowGameClearUI()
