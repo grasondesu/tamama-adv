@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +13,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private bool jumpFlg;
 
-    private Vector2 inputDirection;
+    private Vector2 inputDirection; // キーボードやゲームパッドからの入力
+    private float overrideDirection = 0f; // UI入力用の上書き値
+    private bool isUIInputActive = false; // UI入力が有効かどうか
+
     private Animator anim;
 
     [SerializeField, Header("MainManager")]
@@ -22,96 +24,121 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        // コンポーネント参照取得
         rigidbody2D = GetComponent<Rigidbody2D>();
         jumpFlg = false;
         anim = GetComponent<Animator>();
     }
 
-    // Update（1フレームごとに1度ずつ実行）
     void Update()
     {
-        Move();
-        LookMoveDirec();
+        Vector2 finalInput;
 
+        // UI入力があれば優先
+        if (isUIInputActive)
+        {
+            finalInput = new Vector2(overrideDirection, 0f);
+        }
+        else
+        {
+            finalInput = inputDirection;
+        }
+
+        Move(finalInput);
+        LookMoveDirec(finalInput);
     }
 
-    private void Move()
+    private void Move(Vector2 direction)
     {
-        rigidbody2D.velocity = new Vector2(inputDirection.x * moveSpeed, rigidbody2D.velocity.y);
-        anim.SetBool("Run", inputDirection.x != 0.0f);
+        rigidbody2D.velocity = new Vector2(direction.x * moveSpeed, rigidbody2D.velocity.y);
+        anim.SetBool("Run", Mathf.Abs(direction.x) > 0.1f);
 
-        if (Mathf.Abs(inputDirection.x) > 0.1f && !jumpFlg)
+        if (Mathf.Abs(direction.x) > 0.1f && !jumpFlg)
         {
             AudioManager.Instance.PlayDashSE();
         }
         else
         {
-            // 止まった or ジャンプ中 → 足音を止める
             AudioManager.Instance.StopDashSE();
         }
     }
 
-    private void LookMoveDirec()
+    private void LookMoveDirec(Vector2 direction)
     {
-        if (inputDirection.x > 0.0f)
+        if (direction.x > 0.0f)
         {
             transform.eulerAngles = Vector3.zero;
         }
-        else if (inputDirection.x < 0.0f)
+        else if (direction.x < 0.0f)
         {
-            transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
+            transform.eulerAngles = new Vector3(0, 180f, 0);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.CompareTag("Floor"))
         {
             jumpFlg = false;
-            anim.SetBool("Jump", jumpFlg);
+            anim.SetBool("Jump", false);
         }
-        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Arrow" || collision.gameObject.tag == "DeathLine")
+        else if (collision.gameObject.CompareTag("Enemy") ||
+                 collision.gameObject.CompareTag("Arrow") ||
+                 collision.gameObject.CompareTag("DeathLine"))
         {
-            // ヒットSE再生
             AudioManager.Instance.PlayHitSE();
             Dead();
         }
-        else if (collision.gameObject.tag == "Goal")
+        else if (collision.gameObject.CompareTag("Goal"))
         {
             MainManager.ShowGameClearUI();
             enabled = false;
             GetComponent<PlayerInput>().enabled = false;
-            GetComponent<Animator>().enabled = false;
+            anim.enabled = false;
         }
-
     }
 
+    // キーボードやゲームパッドからの移動入力
     public void OnMove(InputAction.CallbackContext context)
     {
         inputDirection = context.ReadValue<Vector2>();
     }
 
+    // キーボードやゲームパッドからのジャンプ入力
     public void OnJump(InputAction.CallbackContext context)
     {
         if (!context.performed || jumpFlg) return;
 
         rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         jumpFlg = true;
-        anim.SetBool("Jump", jumpFlg);
+        anim.SetBool("Jump", true);
 
-        // ジャンプSEを再生
         AudioManager.Instance.PlayJumpSE();
     }
 
     public void Dead()
     {
-        // プレイヤーを削除
         Destroy(gameObject);
-        // 死亡時ヒット音を鳴らしてヒット音が鳴り終わったらゲームオーバーBGM再生
         AudioManager.Instance.PlayHitSEAndThenGameOverBGM();
-        // 念のため足音を止めておく（確実）
         AudioManager.Instance.StopDashSE();
     }
 
+    // UIButtonManagerから呼ばれる（UIボタン用の移動入力）
+    public void SetMoveDirection(float x, bool isUIInput)
+    {
+        overrideDirection = x;
+        isUIInputActive = isUIInput;
+    }
+
+    // UIButtonManagerから呼ばれる（UIボタン用ジャンプ）
+    public void JumpByButton()
+    {
+        if (jumpFlg) return;
+
+        rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+        jumpFlg = true;
+        anim.SetBool("Jump", true);
+
+        AudioManager.Instance.PlayJumpSE();
+    }
 }
+
