@@ -1031,6 +1031,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5446653552707235353, guid: 8d870f1e9d7a3456ebcf8e344ffd23ed, type: 3}
+      propertyPath: stageScenes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446653552707235353, guid: 8d870f1e9d7a3456ebcf8e344ffd23ed, type: 3}
+      propertyPath: stageScenes.Array.data[1]
+      value: 
+      objectReference: {fileID: 102900000, guid: 49ae6e6a87f224a569b41aa6f6dbc1e8, type: 3}
     - target: {fileID: 6183163061609361519, guid: 8d870f1e9d7a3456ebcf8e344ffd23ed, type: 3}
       propertyPath: m_Name
       value: GameSceneManager
@@ -3840,7 +3848,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1222685969255435270, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 3.72
       objectReference: {fileID: 0}
     - target: {fileID: 1222685969255435270, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
       propertyPath: m_LocalPosition.y
