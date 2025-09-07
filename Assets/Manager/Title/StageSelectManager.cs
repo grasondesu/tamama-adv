@@ -2,29 +2,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+[System.Serializable]
+public class StageButton
+{
+    public Button button;
+    public int stageIndex;   // 1から始まるステージ番号
+}
 
 public class StageSelectManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class StageButton
-    {
-        public Button button;
-        public int stageIndex;       // 1-15 の番号
-    }
-
     [Header("コースごとのボタンパネル")]
-    public GameObject[] coursePanels;       // Course1Panel, Course2Panel, Course3Panel
+    public GameObject[] coursePanels;       // Course1Panel, Course2Panel, ...
 
-    [Header("ステージシーン配列")]
-    public SceneAsset[] stageScenes;        // 配列の順番 = StageIndex-1
+    [Header("ステージシーン名配列")]
+    public string[] stageSceneNames;        // 配列の順番 = stageIndex - 1
 
     [Header("ステージボタン一覧")]
     public StageButton[] stageButtons;      // 全ボタン（CoursePanel の子をまとめて登録）
 
-    private int currentCourse = 0;          // 現在のコース番号（0～2）
+    private int currentCourse = 0;          // 現在のコース番号（0～）
 
     void Start()
     {
@@ -38,29 +34,27 @@ public class StageSelectManager : MonoBehaviour
     {
         foreach (StageButton sb in stageButtons)
         {
-            bool unlocked = IsStageUnlocked(sb.stageIndex);
+            int index = sb.stageIndex;  // クロージャ対策でローカルにコピー
+            bool unlocked = IsStageUnlocked(index);
 
             sb.button.interactable = unlocked;
 
             sb.button.onClick.AddListener(() =>
             {
-                int sceneArrayIndex = sb.stageIndex - 1;
-
-                if (sceneArrayIndex >= 0 && sceneArrayIndex < stageScenes.Length)
+                if (!unlocked)
                 {
-                    if (unlocked)
-                    {
-                        string sceneName = stageScenes[sceneArrayIndex].name;
-                        SceneManager.LoadScene(sceneName);
-                    }
-                    else
-                    {
-                        Debug.LogWarning("ステージ " + sb.stageIndex + " はまだ解放されていません！");
-                    }
+                    Debug.LogWarning("ステージ " + index + " はまだ解放されていません！");
+                    return;
+                }
+
+                int sceneArrayIndex = index - 1;
+                if (sceneArrayIndex >= 0 && sceneArrayIndex < stageSceneNames.Length)
+                {
+                    SceneManager.LoadScene(stageSceneNames[sceneArrayIndex]);
                 }
                 else
                 {
-                    Debug.LogError("StageIndex " + sb.stageIndex + " に対応する SceneAsset が stageScenes 配列にありません");
+                    Debug.LogError("StageIndex " + index + " に対応するシーン名が stageSceneNames 配列にありません");
                 }
             });
         }
@@ -93,29 +87,17 @@ public class StageSelectManager : MonoBehaviour
         }
     }
 
+    // ステージのアンロック判定
     bool IsStageUnlocked(int stageIndex)
     {
-        if (stageIndex == 1) return true;
+        if (stageIndex == 1) return true; // 最初のステージは常にアンロック
         return PlayerPrefs.GetInt("StageCleared" + (stageIndex - 1), 0) == 1;
     }
 
+    // ステージクリア時に呼ぶ
     public void StageCleared(int stageIndex)
     {
         PlayerPrefs.SetInt("StageCleared" + stageIndex, 1);
         PlayerPrefs.Save();
     }
-
-#if UNITY_EDITOR
-    [ContextMenu("Check Stage Scenes")]
-    void CheckStageScenes()
-    {
-        for (int i = 0; i < stageButtons.Length; i++)
-        {
-            if (stageScenes.Length < stageButtons[i].stageIndex)
-            {
-                Debug.LogWarning("StageIndex " + stageButtons[i].stageIndex + " に対応する SceneAsset が stageScenes 配列にありません");
-            }
-        }
-    }
-#endif
 }

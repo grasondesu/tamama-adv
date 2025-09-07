@@ -530,22 +530,22 @@ MonoBehaviour:
   - {fileID: 953944352}
   - {fileID: 455294776}
   - {fileID: 765448933}
-  stageScenes:
-  - {fileID: 102900000, guid: 480af362fffc347ef8092ba5344ab696, type: 3}
-  - {fileID: 102900000, guid: 2c0aba9045a9641638cfc5cd74d70a1e, type: 3}
-  - {fileID: 102900000, guid: 30f132114435748d5ab6b2cf19bce6fe, type: 3}
-  - {fileID: 102900000, guid: 53b90e27400994582b6bf7f28a2cd713, type: 3}
-  - {fileID: 102900000, guid: 49ae6e6a87f224a569b41aa6f6dbc1e8, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  stageSceneNames:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
   stageButtons:
   - button: {fileID: 1731609752}
     stageIndex: 1
@@ -567,15 +567,15 @@ MonoBehaviour:
     stageIndex: 9
   - button: {fileID: 0}
     stageIndex: 10
-  - button: {fileID: 0}
+  - button: {fileID: 1308183511}
     stageIndex: 11
-  - button: {fileID: 0}
+  - button: {fileID: 453326836}
     stageIndex: 12
-  - button: {fileID: 0}
+  - button: {fileID: 5864519}
     stageIndex: 13
-  - button: {fileID: 0}
+  - button: {fileID: 650715045}
     stageIndex: 14
-  - button: {fileID: 0}
+  - button: {fileID: 843897605}
     stageIndex: 15
 --- !u!1 &269385231
 GameObject:
