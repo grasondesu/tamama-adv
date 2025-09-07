@@ -2490,6 +2490,10 @@ PrefabInstance:
       propertyPath: stageScenes.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5446653552707235353, guid: 8d870f1e9d7a3456ebcf8e344ffd23ed, type: 3}
+      propertyPath: stageScenes.Array.data[1]
+      value: 
+      objectReference: {fileID: 102900000, guid: 2c0aba9045a9641638cfc5cd74d70a1e, type: 3}
     - target: {fileID: 6183163061609361519, guid: 8d870f1e9d7a3456ebcf8e344ffd23ed, type: 3}
       propertyPath: m_Name
       value: GameSceneManager

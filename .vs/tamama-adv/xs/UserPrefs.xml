@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{F821431E-0D94-F35A-A6ED-41C09F3614C9}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Manager/Title/StageSelectManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/scripts/GameSceneManager.cs">
     <Files>
       <File FileName="Assets/Manager/Main Manager/Scripts/MainManager.cs" Line="55" Column="2" IsPinned="True" />
       <File FileName="Assets/Traps/RioJr/Scripts/rioJr.cs" />
@@ -11,7 +11,7 @@
       <File FileName="Assets/Traps/Arrow/Scripts/Arrow.cs" />
       <File FileName="Assets/Manager/Sound/SEPlayer.cs" />
       <File FileName="Assets/UI/Button/scripts/UIButtonManager.cs" />
-      <File FileName="Assets/Scenes/scripts/GameSceneManager.cs" />
+      <File FileName="Assets/Scenes/scripts/GameSceneManager.cs" Line="21" Column="33" />
       <File FileName="Assets/Traps/Crystal/Scripts/cristal.cs" />
       <File FileName="Assets/Manager/Title/StageSelectManager.cs" Line="77" Column="6" />
     </Files>
@@ -31,15 +31,15 @@
               <Node name="Manager" expanded="True">
                 <Node name="Camera" expanded="True" />
                 <Node name="Main Manager" expanded="True">
-                  <Node name="Scripts" expanded="True">
-                    <Node name="MainManager.cs" selected="True" />
-                  </Node>
+                  <Node name="Scripts" expanded="True" />
                 </Node>
                 <Node name="Sound" expanded="True" />
                 <Node name="Title" expanded="True" />
               </Node>
               <Node name="Scenes" expanded="True">
-                <Node name="scripts" expanded="True" />
+                <Node name="scripts" expanded="True">
+                  <Node name="GameSceneManager.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="Traps" expanded="True">
                 <Node name="Arrow" expanded="True">
@@ -71,7 +71,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="82a07897-4f97-4608-9d40-53e661e1526d" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="031416cd-085b-4528-b70e-365cf091413a" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
