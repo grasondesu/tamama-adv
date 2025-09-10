@@ -1,0 +1,77 @@
+﻿<Properties StartupConfiguration="{F821431E-0D94-F35A-A6ED-41C09F3614C9}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Traps/Crystal/Scripts/cristal.cs">
+    <Files>
+      <File FileName="Assets/Manager/Main Manager/Scripts/MainManager.cs" Line="55" Column="2" IsPinned="True" />
+      <File FileName="Assets/Traps/RioJr/Scripts/rioJr.cs" Line="16" Column="37" />
+      <File FileName="Assets/Character/Main Character/Scripts/PlayerController.cs" Line="144" Column="1" />
+      <File FileName="Assets/Character/Enemy/Scripts/Enemy.cs" />
+      <File FileName="Assets/Manager/Camera/CameraManager.cs" />
+      <File FileName="Assets/UI/Block/Scripts/fallblock.cs" Line="1" Column="1" />
+      <File FileName="Assets/Manager/Camera/Camera Checker.cs" Line="1" Column="1" />
+      <File FileName="Assets/Traps/Arrow/Scripts/Arrow.cs" Line="56" Column="2" />
+      <File FileName="Assets/Manager/Sound/SEPlayer.cs" />
+      <File FileName="Assets/UI/Button/scripts/UIButtonManager.cs" Line="4" Column="9" />
+      <File FileName="Assets/Scenes/scripts/GameSceneManager.cs" Line="25" Column="1" />
+      <File FileName="Assets/Traps/Crystal/Scripts/cristal.cs" Line="56" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="tamama-adv" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="character" expanded="True">
+                <Node name="Enemy" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="Main Character" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Manager" expanded="True">
+                <Node name="Camera" expanded="True" />
+                <Node name="Main Manager" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="Sound" expanded="True" />
+              </Node>
+              <Node name="Scenes" expanded="True">
+                <Node name="scripts" expanded="True" />
+              </Node>
+              <Node name="Traps" expanded="True">
+                <Node name="Arrow" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="Crystal" expanded="True">
+                  <Node name="Scripts" expanded="True">
+                    <Node name="cristal.cs" selected="True" />
+                  </Node>
+                </Node>
+                <Node name="RioJr" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="UI" expanded="True">
+                <Node name="Block" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="Button" expanded="True">
+                  <Node name="scripts" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b0018b10-11a4-440a-b0c7-f95a1c6fffa7" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

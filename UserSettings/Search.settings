@@ -14,6 +14,9 @@ scopes = {
 	"last_search.3BE40471" = ""
 	"OpenInspectorPreview.3BE40471" = "0"
 	"currentGroup.3BE40471" = "scene"
+	"last_search.310DEAF3" = "p:t:MainManager gameoverui=none"
+	"OpenInspectorPreview.310DEAF3" = "0"
+	"currentGroup.310DEAF3" = "all"
 }
 providers = {
 	adb = {
