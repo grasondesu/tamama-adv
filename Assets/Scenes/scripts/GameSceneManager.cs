@@ -3,22 +3,36 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour
 {
-    // リトライ：今のシーンをもう一度読み込む
+    // 現在のステージ番号を取得
+    int GetCurrentStageIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
+
+    // リトライ（今のシーンをもう一度読み込む）
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    // メイン画面へ戻る（シーン名を "MainMenu" と仮定）
+    // メインメニューへ戻る（0番を MainMenu にしておく）
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("共同作成");
+        SceneManager.LoadScene(1);
     }
 
-    // 次のステージへ進む（今のシーン番号 +1）
+    // 次のステージへ
     public void NextStage()
     {
-        SceneManager.LoadScene("3-1");
+        int currentIndex = GetCurrentStageIndex();
+
+        if (currentIndex + 1 < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(currentIndex + 1);
+        }
+        else
+        {
+            Debug.Log("これ以上ステージがありません");
+        }
     }
 }
-

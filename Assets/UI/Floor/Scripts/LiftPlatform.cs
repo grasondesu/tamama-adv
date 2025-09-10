@@ -33,6 +33,13 @@ public class LiftPlatform : MonoBehaviour
                 isMovingUp = false;
             }
         }
+
+        // ✅ ゲームオーバーまたはゲームクリアなら発射しない
+        if (MainManager.Instance != null &&
+            (MainManager.Instance.isGameOvered || MainManager.Instance.isGameCleared))
+        {
+            isMovingUp = false;
+        }
     }
 
     // 外部から呼び出せる開始関数
@@ -58,4 +65,5 @@ public class LiftPlatform : MonoBehaviour
             collision.transform.SetParent(null);
         }
     }
+
 }
