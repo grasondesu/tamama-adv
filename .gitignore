@@ -1,0 +1,25 @@
+# Unity 関連の不要なファイル・フォルダを無視する設定
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# ビルドされたバイナリや一時ファイル
+*.apk
+*.unitypackage
+
+# Visual Studio / JetBrains Rider 用
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.user
+*.unityproj
+
+# OSごとのゴミファイル
+.DS_Store
+Thumbs.db
+Library/

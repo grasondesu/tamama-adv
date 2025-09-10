@@ -1,0 +1,2 @@
+/Users/ooyatatsuya//Desktop/Unity/共同作成ゲーム/My[[:space:]]project/* filter=lfs diff=lfs merge=lfs -text
+My[[:space:]]project/**/* filter=lfs diff=lfs merge=lfs -text
