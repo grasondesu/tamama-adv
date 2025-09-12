@@ -4,33 +4,26 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    [SerializeField, Header("打ち出し角度")]
-    private Vector2 _direction;
+    [SerializeField, Header("飛ばす角度（度）")]
+    private float _angleDegree;
 
-    [SerializeField, Header("横位置")]
+    [SerializeField, Header("発射速度")]
+    private float _launchSpeed = 5f;
+
+    [SerializeField, Header("発射するプレイヤー位置X以上")]
     private float _posx;
 
-    [SerializeField, Header("縦位置")]
+    [SerializeField, Header("発射するプレイヤー位置Y以上")]
     private float _posy;
 
     public PlayerController _player;
 
     private Rigidbody2D _rb;
+    private bool _hasLaunched = false;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
-        // `_player` が未設定の場合、自動取得する
-        if (_player == null)
-        {
-            _player = FindObjectOfType<PlayerController>();
-
-            if (_player == null)
-            {
-                Debug.LogError("PlayerController がシーン内に見つかりません");
-            }
-        }
     }
 
     void Update()
@@ -40,9 +33,15 @@ public class Arrow : MonoBehaviour
 
     private void go()
     {
-        if (_player.transform.position.x >= _posx && _player.transform.position.y >= _posy)
+        if (!_hasLaunched && _player.transform.position.x >= _posx && _player.transform.position.y >= _posy)
         {
-            _rb.AddForce(_direction * 1);
+            // 角度から方向ベクトルを作成！！
+            float rad = _angleDegree * Mathf.Deg2Rad; // ← 角度をラジアンに変換
+            Vector2 direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+
+            // velocityで初速セット！
+            _rb.velocity = direction.normalized * _launchSpeed;
+            _hasLaunched = true;
         }
     }
 
@@ -54,8 +53,4 @@ public class Arrow : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
 }
-
-

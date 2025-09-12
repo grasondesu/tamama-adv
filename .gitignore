@@ -23,5 +23,6 @@
 .DS_Store
 Thumbs.db
 Library/
-"Kazuki02282598" 
-"Kazuki02282598.pub" 
+
+# Unity のユーザー設定（個人用）
+UserSettings/
