@@ -37,12 +37,35 @@ public class LiftShrinkController : MonoBehaviour
     {
         while (currentIndex < platforms.Count - 1)
         {
-            Debug.Log($"[ShrinkRoutine] Waiting for next shrink. currentIndex={currentIndex}");
+            // ゲームオーバー／ゲームクリアなら処理を中断
+            if (MainManager.Instance != null &&
+                (MainManager.Instance.isGameOvered || MainManager.Instance.isGameCleared))
+            {
+                Debug.Log("[ShrinkRoutine] Game over or cleared. Stop shrinking.");
+                yield break; // コルーチン終了
+            }
 
+            Debug.Log($"[ShrinkRoutine] Waiting for next shrink. currentIndex={currentIndex}");
             yield return new WaitForSeconds(shrinkInterval - warningTime);
+
+            // 同じくゲーム終了チェック（Wait中に終了する可能性もある）
+            if (MainManager.Instance != null &&
+                (MainManager.Instance.isGameOvered || MainManager.Instance.isGameCleared))
+            {
+                Debug.Log("[ShrinkRoutine] Game over or cleared during wait. Stop shrinking.");
+                yield break;
+            }
 
             Debug.Log($"[ShrinkRoutine] FlashWarning for next platform: index={currentIndex + 1}, name={platforms[currentIndex + 1].name}");
             yield return StartCoroutine(FlashWarning(platforms[currentIndex + 1]));
+
+            // ここでも終了チェック
+            if (MainManager.Instance != null &&
+                (MainManager.Instance.isGameOvered || MainManager.Instance.isGameCleared))
+            {
+                Debug.Log("[ShrinkRoutine] Game over or cleared before switching. Stop shrinking.");
+                yield break;
+            }
 
             Debug.Log($"[ShrinkRoutine] Switching platform to index={currentIndex + 1}, name={platforms[currentIndex + 1].name}");
             SwitchToPlatform(currentIndex + 1);
