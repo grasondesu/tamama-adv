@@ -6,23 +6,22 @@ using UnityEngine.InputSystem;
 public class WingPoopMan : MonoBehaviour
 {
     [SerializeField, Header("移動速度")]
-    private float moveSpeed;
+    private float moveSpeed = 3f;
+
     [SerializeField, Header("ジャンプ速度")]
-    private float jumpSpeed;
+    private float jumpSpeed = 5f;
+
     private Rigidbody2D rigidbody2D;
-    private bool jumpFlg;
+    private bool jumpFlg; // ジャンプ済みフラグ
     private Vector2 moveDirection;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // コンポーネント参照取得
         rigidbody2D = GetComponent<Rigidbody2D>();
         moveDirection = Vector2.left;
         jumpFlg = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -30,11 +29,13 @@ public class WingPoopMan : MonoBehaviour
         LookMoveDirec();
     }
 
+    // 左右移動
     private void Move()
     {
         rigidbody2D.velocity = new Vector2(moveDirection.x * moveSpeed, rigidbody2D.velocity.y);
     }
 
+    // 壁に当たったら方向を反転
     private void ChangeMoveDirection()
     {
         Vector2 halfSize = transform.lossyScale / 2.0f;
@@ -46,26 +47,35 @@ public class WingPoopMan : MonoBehaviour
             moveDirection = -moveDirection;
         }
     }
+
+    // 向きを進行方向に合わせる
     private void LookMoveDirec()
     {
         if (moveDirection.x < 0.0f)
-        {
             transform.eulerAngles = Vector3.zero;
-        }
         else if (moveDirection.x > 0.0f)
-        {
             transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
+    }
+
+    // 着地時のジャンプ
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ((collision.gameObject.tag == "Floor" || collision.gameObject.tag == "InvisibleFloor") && !jumpFlg)
+        {
+            // Y方向の速度をリセットしてからジャンプ
+            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0f);
+            rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+
+            jumpFlg = true; // この接地でジャンプ済みにする
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    // 空中に出たらジャンプフラグをリセット
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "InvisibleFloor")
         {
-            rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             jumpFlg = false;
         }
     }
 }
-
-

@@ -557,15 +557,15 @@ MonoBehaviour:
     stageIndex: 4
   - button: {fileID: 1495568269}
     stageIndex: 5
-  - button: {fileID: 0}
+  - button: {fileID: 1044422165}
     stageIndex: 6
-  - button: {fileID: 0}
+  - button: {fileID: 985646340}
     stageIndex: 7
-  - button: {fileID: 0}
+  - button: {fileID: 2037025005}
     stageIndex: 8
-  - button: {fileID: 0}
+  - button: {fileID: 1653001248}
     stageIndex: 9
-  - button: {fileID: 0}
+  - button: {fileID: 855966143}
     stageIndex: 10
   - button: {fileID: 1308183511}
     stageIndex: 11
