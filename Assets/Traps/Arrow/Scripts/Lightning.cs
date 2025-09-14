@@ -2,36 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Lightning : MonoBehaviour
 {
-    public Collider2D hitbox;  // Inspector ‚Åİ’è‚·‚é—p
-    public float lifetime = 1.0f;
+    [Tooltip("å„ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã«å¯¾å¿œã™ã‚‹PolygonCollider2Dã‚’ä¸¦ã¹ã¦ã‚»ãƒƒãƒˆ")]
+    public Sprite[] sprites; // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã«ä½¿ã†ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
+    public PolygonCollider2D[] colliders; // spritesã¨åŒã˜é †ç•ªã§Colliderã‚’ã‚»ãƒƒãƒˆ
+
+    private SpriteRenderer sr;
+    private Sprite lastSprite;
 
     void Start()
     {
-        if (hitbox != null)
-            hitbox.enabled = false;  // Å‰‚ÍOFF
-        Destroy(gameObject, lifetime);  // ©“®‚ÅÁ‚¦‚é
-    }
+        sr = GetComponent<SpriteRenderer>();
+        lastSprite = sr.sprite;
 
-    // ƒAƒjƒ[ƒVƒ‡ƒ“ƒCƒxƒ“ƒg‚©‚çŒÄ‚Ô—p
-    public void EnableCollider()
-    {
-        if (hitbox != null)
-            hitbox.enabled = true;
-    }
-
-    public void DisableCollider()
-    {
-        if (hitbox != null)
-            hitbox.enabled = false;
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        // æœ€åˆã¯å…¨Colliderã‚’ç„¡åŠ¹åŒ–
+        foreach (var col in colliders)
         {
-            collision.GetComponent<PlayerController>()?.Dead();
+            col.enabled = false;
+        }
+
+        EnableColliderForSprite(sr.sprite);
+    }
+
+    void Update()
+    {
+        if (sr.sprite != lastSprite)
+        {
+            lastSprite = sr.sprite;
+            EnableColliderForSprite(sr.sprite);
+        }
+    }
+
+    void EnableColliderForSprite(Sprite sprite)
+    {
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            colliders[i].enabled = (sprites[i] == sprite);
         }
     }
 }
