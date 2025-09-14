@@ -2362,9 +2362,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 110402819}
+      - m_Target: {fileID: 110402814}
         m_TargetAssemblyTypeName: StageSelectManager, Assembly-CSharp
-        m_MethodName: LoadStage
+        m_MethodName: 
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
