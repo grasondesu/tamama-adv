@@ -51,6 +51,10 @@ MonoBehaviour:
   maxRotationSpeed: 360
   groundTag: Floor
   playerTag: Player
+  destroyObjectNames:
+  - Enemy
+  - "\u7FBD\u3046\u3093\u30611"
+  - "\u7FBD\u3046\u3093\u30612"
 --- !u!212 &4505426066803469573
 SpriteRenderer:
   m_ObjectHideFlags: 0
