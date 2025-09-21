@@ -1,20 +1,7 @@
 ﻿<Properties StartupConfiguration="{F821431E-0D94-F35A-A6ED-41C09F3614C9}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Manager/Title/StageSelectManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Manager/Title/TitleManager.cs">
     <Files>
-      <File FileName="Assets/Manager/Main Manager/Scripts/MainManager.cs" Line="55" Column="1" IsPinned="True" />
-      <File FileName="Assets/Traps/RioJr/Scripts/rioJr.cs" />
-      <File FileName="Assets/Character/Main Character/Scripts/PlayerController.cs" />
-      <File FileName="Assets/Character/Enemy/Scripts/Enemy.cs" />
-      <File FileName="Assets/Manager/Camera/CameraManager.cs" />
-      <File FileName="Assets/UI/Block/Scripts/fallblock.cs" Line="10" Column="1" />
-      <File FileName="Assets/Manager/Camera/Camera Checker.cs" />
-      <File FileName="Assets/Traps/Arrow/Scripts/Arrow.cs" />
-      <File FileName="Assets/Manager/Sound/SEPlayer.cs" Line="9" Column="1" />
-      <File FileName="Assets/UI/Button/scripts/UIButtonManager.cs" />
-      <File FileName="Assets/Scenes/scripts/GameSceneManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Traps/Crystal/Scripts/cristal.cs" />
-      <File FileName="Assets/Manager/Title/StageSelectManager.cs" Line="20" Column="26" />
-      <File FileName="Assets/Traps/Jugem/Scripts/JugemController.cs" />
+      <File FileName="Assets/Manager/Title/TitleManager.cs" Line="46" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -36,7 +23,7 @@
                 </Node>
                 <Node name="Sound" expanded="True" />
                 <Node name="Title" expanded="True">
-                  <Node name="StageSelectManager.cs" selected="True" />
+                  <Node name="TitleManager.cs" selected="True" />
                 </Node>
               </Node>
               <Node name="Scenes" expanded="True">
