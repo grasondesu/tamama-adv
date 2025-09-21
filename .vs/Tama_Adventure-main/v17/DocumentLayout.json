@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Manager\\Camera\\shake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Manager\\Camera\\shake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\UI\\Block\\Scripts\\toumei.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\UI\\Block\\Scripts\\toumei.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\UI\\Block\\Scripts\\fallblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\UI\\Block\\Scripts\\fallblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\character\\Main Character\\Scripts\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\character\\Main Character\\Scripts\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Scenes\\scripts\\GameSceneManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scenes\\scripts\\GameSceneManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Traps\\Crystal\\Scripts\\cristal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Traps\\Crystal\\Scripts\\cristal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "shake.cs",
+              "DocumentMoniker": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Manager\\Camera\\shake.cs",
+              "RelativeDocumentMoniker": "Assets\\Manager\\Camera\\shake.cs",
+              "ToolTip": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Manager\\Camera\\shake.cs",
+              "RelativeToolTip": "Assets\\Manager\\Camera\\shake.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T16:00:01.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "toumei.cs",
+              "DocumentMoniker": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\UI\\Block\\Scripts\\toumei.cs",
+              "RelativeDocumentMoniker": "Assets\\UI\\Block\\Scripts\\toumei.cs",
+              "ToolTip": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\UI\\Block\\Scripts\\toumei.cs",
+              "RelativeToolTip": "Assets\\UI\\Block\\Scripts\\toumei.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T14:05:15.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\character\\Main Character\\Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\character\\Main Character\\Scripts\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\character\\Main Character\\Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\character\\Main Character\\Scripts\\PlayerController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAADwv00AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T17:09:57.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "fallblock.cs",
+              "DocumentMoniker": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\UI\\Block\\Scripts\\fallblock.cs",
+              "RelativeDocumentMoniker": "Assets\\UI\\Block\\Scripts\\fallblock.cs",
+              "ToolTip": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\UI\\Block\\Scripts\\fallblock.cs",
+              "RelativeToolTip": "Assets\\UI\\Block\\Scripts\\fallblock.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAADwvywAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T17:09:16.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameSceneManager.cs",
+              "DocumentMoniker": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Scenes\\scripts\\GameSceneManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\scripts\\GameSceneManager.cs",
+              "ToolTip": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Scenes\\scripts\\GameSceneManager.cs",
+              "RelativeToolTip": "Assets\\Scenes\\scripts\\GameSceneManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T17:08:55.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "cristal.cs",
+              "DocumentMoniker": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Traps\\Crystal\\Scripts\\cristal.cs",
+              "RelativeDocumentMoniker": "Assets\\Traps\\Crystal\\Scripts\\cristal.cs",
+              "ToolTip": "C:\\Users\\MIZUTANI\\Desktop\\Tama_Adventure-main\\Assets\\Traps\\Crystal\\Scripts\\cristal.cs",
+              "RelativeToolTip": "Assets\\Traps\\Crystal\\Scripts\\cristal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvyMAAABsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T15:31:16.911Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
