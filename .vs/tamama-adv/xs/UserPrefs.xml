@@ -1,19 +1,7 @@
 ﻿<Properties StartupConfiguration="{F821431E-0D94-F35A-A6ED-41C09F3614C9}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/character/Enemy/Scripts/Enemy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Manager/Title/TitleManager.cs">
     <Files>
-      <File FileName="Assets/Manager/Main Manager/Scripts/MainManager.cs" Line="55" Column="1" IsPinned="True" />
-      <File FileName="Assets/Traps/RioJr/Scripts/rioJr.cs" />
-      <File FileName="Assets/Character/Main Character/Scripts/PlayerController.cs" />
-      <File FileName="Assets/Character/Enemy/Scripts/Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets/Manager/Camera/CameraManager.cs" />
-      <File FileName="Assets/UI/Block/Scripts/fallblock.cs" />
-      <File FileName="Assets/Manager/Camera/Camera Checker.cs" />
-      <File FileName="Assets/Traps/Arrow/Scripts/Arrow.cs" />
-      <File FileName="Assets/Manager/Sound/SEPlayer.cs" />
-      <File FileName="Assets/UI/Button/scripts/UIButtonManager.cs" />
-      <File FileName="Assets/Scenes/scripts/GameSceneManager.cs" />
-      <File FileName="Assets/Traps/Crystal/Scripts/cristal.cs" />
-      <File FileName="Assets/Manager/Title/StageSelectManager.cs" />
+      <File FileName="Assets/Manager/Title/TitleManager.cs" Line="46" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,12 +19,12 @@
               <Node name="Manager" expanded="True">
                 <Node name="Camera" expanded="True" />
                 <Node name="Main Manager" expanded="True">
-                  <Node name="Scripts" expanded="True">
-                    <Node name="MainManager.cs" selected="True" />
-                  </Node>
+                  <Node name="Scripts" expanded="True" />
                 </Node>
                 <Node name="Sound" expanded="True" />
-                <Node name="Title" expanded="True" />
+                <Node name="Title" expanded="True">
+                  <Node name="TitleManager.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="Scenes" expanded="True">
                 <Node name="scripts" expanded="True" />
@@ -46,6 +34,9 @@
                   <Node name="Scripts" expanded="True" />
                 </Node>
                 <Node name="Crystal" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+                <Node name="Jugem" expanded="True">
                   <Node name="Scripts" expanded="True" />
                 </Node>
                 <Node name="RioJr" expanded="True">

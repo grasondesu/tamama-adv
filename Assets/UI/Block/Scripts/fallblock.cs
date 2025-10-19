@@ -42,7 +42,7 @@ public class fallblock : MonoBehaviour
         // 床が落下する準備ができたらRigidbody2Dを有効にする
         rb.isKinematic = false;
 
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 0.2f);
     }
 
     // Update is called once per frame
