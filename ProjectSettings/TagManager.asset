@@ -12,7 +12,7 @@ TagManager:
   - Floor
   - TransparentWall
   - InvisibleFloor
-  - MeteoDestroyWall
+  - Debris
   layers:
   - Default
   - TransparentFX
