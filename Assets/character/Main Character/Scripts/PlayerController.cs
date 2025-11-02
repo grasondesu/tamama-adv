@@ -68,8 +68,15 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            jumpFlg = false;
-            anim.SetBool("Jump", false);
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                if (contact.normal.y > 0.7f) // 真下からの接触のみ
+                {
+                    jumpFlg = false;
+                    anim.SetBool("Jump", false);
+                    break;
+                }
+            }
         }
         else if (collision.gameObject.CompareTag("Enemy") ||
                  collision.gameObject.CompareTag("Arrow") ||

@@ -36,7 +36,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
             // AudioSourceを取得
             bgmSource = transform.Find("BGMSource").GetComponent<AudioSource>();
