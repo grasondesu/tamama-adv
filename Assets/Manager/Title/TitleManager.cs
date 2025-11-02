@@ -1,45 +1,39 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TitleManager : MonoBehaviour
 {
-    [Header("????????")]
+    [Header("コースセレクトシーン名")]
     [SerializeField] private string courseSelectSceneName = "CourseSelectScene";
 
-    [Header("????")]
-    [SerializeField] private VideoPlayer videoPlayer; // Canvas?RawImage???????VideoPlayer
+    [Header("VideoPlayer（背景動画用）")]
+    [SerializeField] private VideoPlayer videoPlayer;
+
+    [Header("スタート用透明ボタン")]
+    [SerializeField] private Button startButton; // UIでクリック判定
 
     void Start()
     {
+        // 背景動画を再生
         if (videoPlayer != null)
-        {
-            videoPlayer.Play(); // ???????????
-        }
+            videoPlayer.Play();
+
+        // ボタンにクリックイベントを登録
+        if (startButton != null)
+            startButton.onClick.AddListener(OnClickStart);
     }
 
-    void Update()
+    private void OnClickStart()
     {
-        // PC: ???????
-        if (Input.GetMouseButtonDown(0))
-        {
-            LoadCourseSelect();
-        }
+        // UI判定を確認（念のため、ボタン上以外のクリックを無視）
+        if (EventSystem.current.currentSelectedGameObject != null &&
+            EventSystem.current.currentSelectedGameObject != startButton.gameObject)
+            return;
 
-        // ???: ???
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                LoadCourseSelect();
-            }
-        }
-    }
-
-    private void LoadCourseSelect()
-    {
-        Debug.Log("??????/????? ? ??");
+        Debug.Log("コースセレクトに遷移");
         SceneManager.LoadScene(courseSelectSceneName);
     }
 }
