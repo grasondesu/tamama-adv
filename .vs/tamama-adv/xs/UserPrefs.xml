@@ -1,22 +1,25 @@
 ﻿<Properties StartupConfiguration="{F821431E-0D94-F35A-A6ED-41C09F3614C9}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Manager/Sound/AudioManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Audio/Scripts/AudioManager.cs">
     <Files>
-      <File FileName="Assets/Manager/Title/TitleManager.cs" Line="40" Column="1" />
+      <File FileName="Assets/Manager/Title/TitleManager.cs" Line="4" Column="22" />
       <File FileName="Assets/UI/Setting/Scripts/SettingUIManager.cs" />
-      <File FileName="Assets/character/Main Character/Scripts/PlayerController.cs" />
-      <File FileName="Assets/UI/Canvas/CanvasManager.cs" />
-      <File FileName="Assets/Audio/SoundSettingManager.cs" Line="15" Column="44" />
-      <File FileName="Assets/Manager/Sound/SEPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Manager/Sound/BGMPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Manager/Sound/AudioManager.cs" Line="231" Column="1" />
-      <File FileName="Assets/Manager/Main Manager/Scripts/MainManager.cs" Line="54" Column="37" />
+      <File FileName="Assets/character/Main Character/Scripts/PlayerController.cs" Line="154" Column="1" />
+      <File FileName="Assets/UI/Canvas/CanvasManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Audio/SoundSettingManager.cs" Line="51" Column="6" />
+      <File FileName="Assets/Manager/Main Manager/Scripts/MainManager.cs" Line="57" Column="1" />
+      <File FileName="Assets/Audio/Scripts/AudioManager.cs" Line="184" Column="1" />
+      <File FileName="Assets/UI/others/Scripts/AutoSaveManager.cs" Line="16" Column="42" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="tamama-adv" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Audio" expanded="True" />
+              <Node name="Audio" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="AudioManager.cs" selected="True" />
+                </Node>
+              </Node>
               <Node name="character" expanded="True">
                 <Node name="Enemy" expanded="True">
                   <Node name="Scripts" expanded="True" />
@@ -29,9 +32,6 @@
                 <Node name="Camera" expanded="True" />
                 <Node name="Main Manager" expanded="True">
                   <Node name="Scripts" expanded="True" />
-                </Node>
-                <Node name="Sound" expanded="True">
-                  <Node name="AudioManager.cs" selected="True" />
                 </Node>
                 <Node name="Title" expanded="True" />
               </Node>
@@ -60,6 +60,9 @@
                   <Node name="scripts" expanded="True" />
                 </Node>
                 <Node name="Canvas" expanded="True" />
+                <Node name="others" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
                 <Node name="Setting" expanded="True">
                   <Node name="Scripts" expanded="True" />
                 </Node>
