@@ -432,9 +432,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfe1a4217f5242828825060fc5ab250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  courseBGM: {fileID: 8300000, guid: 8f37a1086dde14793976b7677b023cc6, type: 3}
-  gameClearBGM: {fileID: 8300000, guid: 64452d8cc57cc413396f14b5423d4866, type: 3}
+  sceneBGMs:
+  - sceneName: 1
+    clip: {fileID: 8300000, guid: 081cddf4252f844229713a998f3d6d53, type: 3}
+    loop: 1
+  - sceneName: 2
+    clip: {fileID: 8300000, guid: 73b0c15fb00ed4f2e8ffba18c8553f35, type: 3}
+    loop: 1
+  - sceneName: 3
+    clip: {fileID: 8300000, guid: c98fc03ec6a074f71969a69d31361f92, type: 3}
+    loop: 1
+  - sceneName: 4
+    clip: {fileID: 8300000, guid: 73b0c15fb00ed4f2e8ffba18c8553f35, type: 3}
+    loop: 1
+  - sceneName: 5
+    clip: {fileID: 8300000, guid: 081cddf4252f844229713a998f3d6d53, type: 3}
+    loop: 1
+  - sceneName: 6
+    clip: {fileID: 8300000, guid: 8f37a1086dde14793976b7677b023cc6, type: 3}
+    loop: 1
+  - sceneName: 7
+    clip: {fileID: 8300000, guid: f9629cce00987448a82ec96c8887f2cb, type: 3}
+    loop: 1
+  - sceneName: 8
+    clip: {fileID: 8300000, guid: 4255dfc58c0794c7492717bb977000ba, type: 3}
+    loop: 1
+  - sceneName: 9
+    clip: {fileID: 8300000, guid: 081cddf4252f844229713a998f3d6d53, type: 3}
+    loop: 1
+  - sceneName: 10
+    clip: {fileID: 0}
+    loop: 1
+  - sceneName: 11
+    clip: {fileID: 8300000, guid: 8f37a1086dde14793976b7677b023cc6, type: 3}
+    loop: 1
+  - sceneName: 12
+    clip: {fileID: 8300000, guid: 8f37a1086dde14793976b7677b023cc6, type: 3}
+    loop: 1
+  - sceneName: 13
+    clip: {fileID: 8300000, guid: 870dfbebb7a46472bb3d1626b5e27cf8, type: 3}
+    loop: 1
+  - sceneName: 14
+    clip: {fileID: 8300000, guid: 8f780b4ab91ee41ff95fcbb7f27c4877, type: 3}
+    loop: 1
+  - sceneName: 15
+    clip: {fileID: 8300000, guid: 1f8b2412b68154eb9b3da5c95d825009, type: 3}
+    loop: 1
   gameOverBGM: {fileID: 8300000, guid: b07cadfacd0984bf78405d10f7b296e5, type: 3}
+  gameClearBGM: {fileID: 8300000, guid: 64452d8cc57cc413396f14b5423d4866, type: 3}
   dashSE: {fileID: 8300000, guid: 36069e70d0af54dae8fe86f46422be82, type: 3}
   jumpSE: {fileID: 8300000, guid: 40c16c571b80f411d94c42b9028e9e33, type: 3}
   hitSE: {fileID: 8300000, guid: 3b9eeec70eea84fc69596ddf922e0989, type: 3}

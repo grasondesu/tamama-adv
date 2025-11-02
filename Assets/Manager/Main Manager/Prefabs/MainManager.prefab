@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4479ba062ff3c43ea9c0d25ec5c2b067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverUI: {fileID: 0}
-  gameClearUI: {fileID: 0}
+  player: {fileID: 5410222501841722726, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
+  gameClearUI: {fileID: 1630220467547934483, guid: d9890b28ecd2a44bdbbdbd3afe0f057d, type: 3}
+  gameOverUI: {fileID: 4977945584575945924, guid: 8013ffd9777334dd681d74fa6c719766, type: 3}
+  isGameCleared: 0
+  isGameOvered: 0

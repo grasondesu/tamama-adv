@@ -1,91 +1,137 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+[System.Serializable]
+public class SceneBGM
+{
+    public string sceneName;
+    public AudioClip clip;
+    public bool loop = true;
+}
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("BGM Clips")]
-    public AudioClip courseBGM;
-    public AudioClip gameClearBGM;
+    [Header("シーンごとのBGM")]
+    public List<SceneBGM> sceneBGMs = new List<SceneBGM>();
+
+    [Header("特別BGM")]
     public AudioClip gameOverBGM;
+    public AudioClip gameClearBGM;
 
     [Header("SE Clips")]
     public AudioClip dashSE;
     public AudioClip jumpSE;
     public AudioClip hitSE;
 
-    // AudioSources（自動取得）
     private AudioSource bgmSource;
     private AudioSource dashSeSource;
     private AudioSource jumpSeSource;
     private AudioSource hitSeSource;
+
+    private bool bgmEnabled = true;
+    private bool seEnabled = true;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
 
-            // 子オブジェクトのAudioSourceを名前で取得
             bgmSource = transform.Find("BGMSource").GetComponent<AudioSource>();
             dashSeSource = transform.Find("DashSESource").GetComponent<AudioSource>();
             jumpSeSource = transform.Find("JumpSESource").GetComponent<AudioSource>();
             hitSeSource = transform.Find("HitSESource").GetComponent<AudioSource>();
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+            bgmEnabled = PlayerPrefs.GetInt("BGM_ON", 1) == 1;
+            seEnabled = PlayerPrefs.GetInt("SE_ON", 1) == 1;
         }
-        else
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
     }
 
-    #region BGM
-
-    public void PlayBGM(AudioClip clip)
+    private void OnDestroy()
     {
-        if (bgmSource.clip != clip)
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (bgmEnabled)
+            PlayBGMForCurrentScene();
+        else
+            StopBGM();
+    }
+
+    #region === BGM ===
+    public void PlayBGM(AudioClip clip, bool loop = true)
+    {
+        if (!bgmEnabled || clip == null) return;
+
+        if (bgmSource.clip == clip)
         {
-            bgmSource.clip = clip;
-            bgmSource.loop = true;
-            bgmSource.Play();
+            if (!bgmSource.isPlaying)
+                bgmSource.Play();
+            return;
         }
-    }
-    public void PlayCourseBGM()
-    {
-        PlayBGM(courseBGM);
-    }
-    public void PlayGameClearBGM()
-    {
-        bgmSource.Stop(); // コースBGMを止める
 
-        bgmSource.clip = gameClearBGM;
-        bgmSource.loop = false; // ループしない
-        bgmSource.Play();
-    }
-    public void PlayGameOverBGM()
-    {
-        // コースBGMを止める
-        bgmSource.Stop();
-
-        // ゲームオーバーBGMをセットして再生
-        bgmSource.clip = gameOverBGM;
-        bgmSource.loop = false;
+        bgmSource.clip = clip;
+        bgmSource.loop = loop;
         bgmSource.Play();
     }
 
     public void StopBGM()
     {
-        bgmSource.Stop();
+        if (bgmSource.isPlaying)
+            bgmSource.Stop();
+
+        bgmSource.clip = null;
     }
 
+    public void PlayBGMForCurrentScene()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        foreach (var sb in sceneBGMs)
+        {
+            if (sb.sceneName == sceneName && sb.clip != null)
+            {
+                PlayBGM(sb.clip, sb.loop);
+                return;
+            }
+        }
+        StopBGM();
+    }
+
+    public void PlayGameClearBGM()
+    {
+        if (!bgmEnabled) return;
+        if (gameClearBGM != null)
+            PlayBGM(gameClearBGM, loop: false);
+        else
+            Debug.LogWarning("⚠️ GameClearBGM が設定されていません");
+    }
+
+    public void PlayGameOverBGM()
+    {
+        if (!bgmEnabled) return;
+        if (gameOverBGM != null)
+            PlayBGM(gameOverBGM, loop: false);
+        else
+            Debug.LogWarning("⚠️ GameOverBGM が設定されていません");
+    }
     #endregion
 
-    #region SE
-
+    #region === SE ===
     public void PlayDashSE()
     {
+        if (!seEnabled) return;
         if (!dashSeSource.isPlaying)
         {
             dashSeSource.clip = dashSE;
@@ -97,37 +143,46 @@ public class AudioManager : MonoBehaviour
     public void StopDashSE()
     {
         if (dashSeSource.isPlaying)
-        {
             dashSeSource.Stop();
-        }
     }
 
-    public void PlayJumpSE()
+    public void PlayJumpSE() { if (seEnabled) jumpSeSource.PlayOneShot(jumpSE); }
+    public void PlayHitSE() { if (seEnabled) hitSeSource.PlayOneShot(hitSE); }
+
+    public void StopAllSE()
     {
-        jumpSeSource.PlayOneShot(jumpSE);
+        dashSeSource.Stop();
+        jumpSeSource.Stop();
+        hitSeSource.Stop();
     }
+    #endregion
 
-    public void PlayHitSE()
+    #region === ON/OFF ===
+    public void SetBgmEnabled(bool enabled)
     {
-        hitSeSource.PlayOneShot(hitSE);
+        bgmEnabled = enabled;
+        PlayerPrefs.SetInt("BGM_ON", enabled ? 1 : 0);
+        PlayerPrefs.Save();
+
+        if (!enabled)
+            StopBGM();
+        else
+            PlayBGMForCurrentScene();
     }
-    public void PlayHitSEAndThenGameOverBGM()
+
+    public void SetSeEnabled(bool enabled)
     {
-        //コルーチンは時間の流れを扱える処理のこと。ある処理をして、〇秒待ってから次の処理をするみたいなことができる
-        StartCoroutine(PlayHitSEThenGameOverCoroutine());
+        seEnabled = enabled;
+        PlayerPrefs.SetInt("SE_ON", enabled ? 1 : 0);
+        PlayerPrefs.Save();
+
+        if (!enabled)
+            StopAllSE();
     }
-
-    private IEnumerator PlayHitSEThenGameOverCoroutine()
-    {
-        // 死亡効果音を再生
-        hitSeSource.PlayOneShot(hitSE);
-
-        // 効果音の再生が終わるまで待機
-        yield return new WaitForSeconds(hitSE.length);
-
-        // 効果音が終わったらゲームオーバーBGMを再生
-        PlayGameOverBGM();
-    }
-
     #endregion
 }
+
+
+
+
+
