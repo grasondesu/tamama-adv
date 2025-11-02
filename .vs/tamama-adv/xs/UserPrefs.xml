@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{F821431E-0D94-F35A-A6ED-41C09F3614C9}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Audio/SoundSettingManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Audio/Scripts/TapToStartBllink.cs">
     <Files>
       <File FileName="Assets/Manager/Title/TitleManager.cs" Line="4" Column="22" />
       <File FileName="Assets/UI/Setting/Scripts/SettingUIManager.cs" />
@@ -7,8 +7,9 @@
       <File FileName="Assets/UI/Canvas/CanvasManager.cs" />
       <File FileName="Assets/Audio/SoundSettingManager.cs" Line="65" Column="1" />
       <File FileName="Assets/Manager/Main Manager/Scripts/MainManager.cs" />
-      <File FileName="Assets/Audio/Scripts/AudioManager.cs" Line="184" Column="1" />
+      <File FileName="Assets/Audio/Scripts/AudioManager.cs" />
       <File FileName="Assets/UI/others/Scripts/AutoSaveManager.cs" />
+      <File FileName="Assets/Audio/Scripts/TapToStartBllink.cs" Line="33" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

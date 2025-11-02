@@ -478,6 +478,9 @@ MonoBehaviour:
   - sceneName: 15
     clip: {fileID: 8300000, guid: 1f8b2412b68154eb9b3da5c95d825009, type: 3}
     loop: 1
+  - sceneName: TitleScene
+    clip: {fileID: 8300000, guid: 08ae00b5cc594473e82cf06eda7c67cb, type: 3}
+    loop: 1
   gameOverBGM: {fileID: 8300000, guid: b07cadfacd0984bf78405d10f7b296e5, type: 3}
   gameClearBGM: {fileID: 8300000, guid: 64452d8cc57cc413396f14b5423d4866, type: 3}
   dashSE: {fileID: 8300000, guid: 36069e70d0af54dae8fe86f46422be82, type: 3}
