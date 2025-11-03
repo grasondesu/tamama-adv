@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 75973228}
   - component: {fileID: 75973227}
   - component: {fileID: 75973226}
+  - component: {fileID: 75973230}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -231,6 +232,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &75973230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75973225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7fb2332e82b4f63aacf19712a31f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  clickSE: {fileID: 8300000, guid: d2a3568acf62649d398baeac7fa24173, type: 3}
 --- !u!1 &95494906
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +472,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1845132152}
         m_TargetAssemblyTypeName: SettingsUIManager, Assembly-CSharp
         m_MethodName: OpenMainPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 75973230}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlayClickSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -996,10 +1023,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 75973229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110, y: -391}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.521, y: 0.12219314}
+  m_AnchorMax: {x: 0.521, y: 0.12219314}
+  m_AnchoredPosition: {x: -12, y: 1}
+  m_SizeDelta: {x: 140, y: 54.3343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290895195
 MonoBehaviour:
@@ -1029,7 +1056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1062,11 +1089,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
-  m_fontSizeBase: 36
+  m_fontSize: 30.9
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 40
+  m_fontSizeMin: 30
   m_fontSizeMax: 120
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -1098,7 +1125,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -238.99353, w: 0}
+  m_margin: {x: 0, y: 0, z: -24.4458, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1974,6 +2001,7 @@ GameObject:
   - component: {fileID: 2139009154}
   - component: {fileID: 2139009156}
   - component: {fileID: 2139009155}
+  - component: {fileID: 2139009157}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -1995,10 +2023,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 75973229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035, y: -0.0037231}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139009155
 MonoBehaviour:
@@ -2035,6 +2063,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139009153}
   m_CullTransparentMesh: 1
+--- !u!114 &2139009157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139009153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1.7777778
 --- !u!1 &2139574802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,6 +2163,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1283652309}
         m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
         m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 75973230}
+        m_TargetAssemblyTypeName: UIButtonSound, Assembly-CSharp
+        m_MethodName: PlayClickSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
