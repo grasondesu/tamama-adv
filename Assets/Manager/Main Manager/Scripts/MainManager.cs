@@ -1,25 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 
-    [SerializeField, Header("ゲームオーバーUI")]
-    private GameObject gameOverUI;
+    [Header("プレイヤー")]
+    [SerializeField] private GameObject player;
 
-    [SerializeField, Header("ゲームクリアUI")]
-    private GameObject gameClearUI;
+    [Header("UI")]
+    [SerializeField] private GameObject gameClearUI;
+    [SerializeField] private GameObject gameOverUI;
 
-    private GameObject player;
-    public bool isGameCleared = false;
-    public bool isGameOvered = false;
+    [HideInInspector] public bool isGameCleared = false;
+    [HideInInspector] public bool isGameOvered = false;
 
-    //private GameObject BGMManager;
-
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;
@@ -27,33 +22,42 @@ public class MainManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        player = FindObjectOfType<PlayerController>().gameObject;
-        AudioManager.Instance.PlayCourseBGM();
+        if (player == null)
+            player = FindObjectOfType<PlayerController>()?.gameObject;
+
+        // シーン開始時BGM再生
+        AudioManager.Instance?.PlayBGMForCurrentScene();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowGameOverUI()
     {
-        ShowGameOverUI();
-    }
+        if (gameOverUI != null)
+            gameOverUI.SetActive(true);
 
-    private void ShowGameOverUI()
-    {
-        if (player != null) return;
-        gameOverUI.SetActive(true);
         isGameOvered = true;
+        Debug.Log("💀 GameOver UI 表示");
+
+        // GameOver BGM 再生
+        AudioManager.Instance?.StopDashSE();
+        AudioManager.Instance?.PlayGameOverBGM();
     }
 
     public void ShowGameClearUI()
     {
-        AudioManager.Instance.StopDashSE();
-        AudioManager.Instance.PlayGameClearBGM();
-        gameClearUI.SetActive(true);
-
+        if (isGameCleared) return;
         isGameCleared = true;
-        Debug.Log("🎉 isGameCleared = true に設定された！");
+
+        // SE停止
+        AudioManager.Instance?.StopDashSE();
+
+        // GameClear BGM 再生
+        AudioManager.Instance?.PlayGameClearBGM();
+
+        if (gameClearUI != null)
+            gameClearUI.SetActive(true);
+
+        Debug.Log("🎉 GameClear UI 表示");
     }
 }

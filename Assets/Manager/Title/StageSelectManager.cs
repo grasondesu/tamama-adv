@@ -35,18 +35,9 @@ public class StageSelectManager : MonoBehaviour
         foreach (StageButton sb in stageButtons)
         {
             int index = sb.stageIndex;  // クロージャ対策でローカルにコピー
-            bool unlocked = IsStageUnlocked(index);
-
-            sb.button.interactable = unlocked;
 
             sb.button.onClick.AddListener(() =>
             {
-                if (!unlocked)
-                {
-                    Debug.LogWarning("ステージ " + index + " はまだ解放されていません！");
-                    return;
-                }
-
                 int sceneArrayIndex = index - 1;
                 if (sceneArrayIndex >= 0 && sceneArrayIndex < stageSceneNames.Length)
                 {
@@ -85,19 +76,5 @@ public class StageSelectManager : MonoBehaviour
         {
             coursePanels[i].SetActive(i == currentCourse);
         }
-    }
-
-    // ステージのアンロック判定
-    bool IsStageUnlocked(int stageIndex)
-    {
-        if (stageIndex == 1) return true; // 最初のステージは常にアンロック
-        return PlayerPrefs.GetInt("StageCleared" + (stageIndex - 1), 0) == 1;
-    }
-
-    // ステージクリア時に呼ぶ
-    public void StageCleared(int stageIndex)
-    {
-        PlayerPrefs.SetInt("StageCleared" + stageIndex, 1);
-        PlayerPrefs.Save();
     }
 }

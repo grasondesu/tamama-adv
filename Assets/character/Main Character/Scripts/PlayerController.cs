@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,9 +14,6 @@ public class PlayerController : MonoBehaviour
     private bool jumpFlg;
     private Vector2 inputDirection;
 
-    [Header("MainManager")]
-    public MainManager MainManager;
-
     private float overrideDirection = 0f;
     private bool isUIInputActive = false;
 
@@ -30,11 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (MainManager != null && (MainManager.isGameCleared || MainManager.isGameOvered))
-        {
-            // ゲーム終了時は入力無効、Move呼ばない
+        if (MainManager.Instance != null && (MainManager.Instance.isGameCleared || MainManager.Instance.isGameOvered))
             return;
-        }
 
         Vector2 finalInput = isUIInputActive ? new Vector2(overrideDirection, 0f) : inputDirection;
         Move(finalInput);
@@ -47,13 +40,9 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Run", Mathf.Abs(direction.x) > 0.1f);
 
         if (Mathf.Abs(direction.x) > 0.1f && !jumpFlg)
-        {
-            AudioManager.Instance.PlayDashSE();
-        }
+            AudioManager.Instance?.PlayDashSE();
         else
-        {
-            AudioManager.Instance.StopDashSE();
-        }
+            AudioManager.Instance?.StopDashSE();
     }
 
     private void LookMoveDirec(Vector2 direction)
@@ -68,19 +57,25 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            jumpFlg = false;
-            anim.SetBool("Jump", false);
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                if (contact.normal.y > 0.7f)
+                {
+                    jumpFlg = false;
+                    anim.SetBool("Jump", false);
+                    break;
+                }
+            }
         }
         else if (collision.gameObject.CompareTag("Enemy") ||
                  collision.gameObject.CompareTag("Arrow") ||
                  collision.gameObject.CompareTag("DeathLine"))
         {
-            AudioManager.Instance.PlayHitSE();
             Dead();
         }
         else if (collision.gameObject.CompareTag("Goal"))
         {
-            MainManager.ShowGameClearUI();
+            MainManager.Instance?.ShowGameClearUI();
             StartCoroutine(StopPlayerSmoothly());
         }
     }
@@ -97,15 +92,27 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         jumpFlg = true;
         anim.SetBool("Jump", true);
-        AudioManager.Instance.PlayJumpSE();
+        AudioManager.Instance?.PlayJumpSE();
     }
 
     public void Dead()
     {
+        if (MainManager.Instance != null && MainManager.Instance.isGameOvered) return;
+
+        // GameOver 状態更新
+        MainManager.Instance.isGameOvered = true;
+
+        // ヒットSE再生 & DashSE停止
+        AudioManager.Instance?.PlayHitSE();
+        AudioManager.Instance?.StopDashSE();
+
+        // GameOver UI と BGM 再生
+        MainManager.Instance.ShowGameOverUI();
+
+        // プレイヤー削除
         Destroy(gameObject);
-        AudioManager.Instance.PlayHitSEAndThenGameOverBGM();
-        AudioManager.Instance.StopDashSE();
-        // ゲームオーバーも滑らず停止（必要ならMainManager内でUI表示）
+
+        Debug.Log("💀 Player Dead: GameOver発生");
     }
 
     public void SetMoveDirection(float x, bool isUIInput)
@@ -121,16 +128,14 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         jumpFlg = true;
         anim.SetBool("Jump", true);
-        AudioManager.Instance.PlayJumpSE();
+        AudioManager.Instance?.PlayJumpSE();
     }
 
     private IEnumerator StopPlayerSmoothly()
     {
-        // アニメーションと入力停止
         anim.enabled = false;
         GetComponent<PlayerInput>().enabled = false;
 
-        // Rigidbody2Dを滑らかに止める
         Vector2 startVelocity = rigidbody2D.velocity;
         float duration = 0.1f;
         float elapsed = 0f;
