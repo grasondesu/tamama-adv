@@ -3,29 +3,17 @@ using UnityEngine.UI;
 
 public class AutoSaveManager : MonoBehaviour
 {
-<<<<<<< HEAD
-    public GameObject settingsScreen; // İ’è‰æ–ÊUI
-    public Text debugText;            // ƒfƒoƒbƒO—pText
-=======
-    public GameObject settingsScreen;
-    public Text debugText; // ƒfƒoƒbƒO—pUI
->>>>>>> becf50895b9e12a4aadb0c007717d6629c5faf33
+    public GameObject settingsScreen; // è¨­å®šç”»é¢UI
+    public Text debugText;            // ãƒ‡ãƒãƒƒã‚°ç”¨Text
 
     private int lastClearedStage;
 
     private void Awake()
     {
-<<<<<<< HEAD
-        // ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğ‘SƒV[ƒ“‹¤’Ê‚Å•Û
+        // ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¨ã‚·ãƒ¼ãƒ³å…±é€šã§ä¿æŒ
         DontDestroyOnLoad(gameObject);
 
-        // d•¡ƒ`ƒFƒbƒN
-=======
-        // ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğƒV[ƒ“Ø‚è‘Ö‚¦‚Å‚àÁ‚³‚È‚¢
-        DontDestroyOnLoad(gameObject);
-
-        // d•¡ƒIƒuƒWƒFƒNƒg‚ª‚ ‚éê‡‚Ííœ
->>>>>>> becf50895b9e12a4aadb0c007717d6629c5faf33
+        // é‡è¤‡ãƒã‚§ãƒƒã‚¯
         AutoSaveManager[] managers = FindObjectsOfType<AutoSaveManager>();
         if (managers.Length > 1)
         {
@@ -40,22 +28,13 @@ public class AutoSaveManager : MonoBehaviour
         UpdateDebugUI();
     }
 
-<<<<<<< HEAD
-    // ƒR[ƒXƒNƒŠƒA‚ÉŒÄ‚Ô
+    // ã‚³ãƒ¼ã‚¹ã‚¯ãƒªã‚¢æ™‚ã«å‘¼ã¶
     public void OnCourseCleared(int stage)
     {
         SaveLastClearedStage(stage);
         lastClearedStage = stage;
         UpdateDebugUI();
         Debug.Log("Course cleared. Stage " + stage + " saved.");
-=======
-    public void OnCourseCleared(int clearedStage)
-    {
-        SaveLastClearedStage(clearedStage);
-        lastClearedStage = clearedStage;
-        UpdateDebugUI();
-        Debug.Log("Course cleared. Stage " + clearedStage + " saved.");
->>>>>>> becf50895b9e12a4aadb0c007717d6629c5faf33
     }
 
     private void SaveLastClearedStage(int stage)
@@ -85,7 +64,7 @@ public class AutoSaveManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        // PlayerPrefs‚É•Û‘¶Ï‚İ‚È‚Ì‚Å’Ç‰Áˆ—•s—v
+        // PlayerPrefsã«ä¿å­˜æ¸ˆã¿ãªã®ã§è¿½åŠ å‡¦ç†ä¸è¦
     }
 
     private void ShowSettingsScreen()
