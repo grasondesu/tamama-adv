@@ -27,3 +27,11 @@ Library/
 # Unity のユーザー設定（個人用）
 UserSettings/
 ProjectSettings/EditorUserSettings.asset
+
+# Visual Studio のキャッシュ類（Git 管理不要）
+.vs/
+*.suo
+*.db
+*.db-shm
+*.db-wal
+UpgradeLog*.htm
