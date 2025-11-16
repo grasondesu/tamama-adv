@@ -3,17 +3,17 @@ using UnityEngine.UI;
 
 public class AutoSaveManager : MonoBehaviour
 {
-    public GameObject settingsScreen;
-    public Text debugText; // ƒfƒoƒbƒO—pUI
+    public GameObject settingsScreen; // è¨­å®šç”»é¢UI
+    public Text debugText;            // ãƒ‡ãƒãƒƒã‚°ç”¨Text
 
     private int lastClearedStage;
 
     private void Awake()
     {
-        // ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğƒV[ƒ“Ø‚è‘Ö‚¦‚Å‚àÁ‚³‚È‚¢
+        // ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¨ã‚·ãƒ¼ãƒ³å…±é€šã§ä¿æŒ
         DontDestroyOnLoad(gameObject);
 
-        // d•¡ƒIƒuƒWƒFƒNƒg‚ª‚ ‚éê‡‚Ííœ
+        // é‡è¤‡ãƒã‚§ãƒƒã‚¯
         AutoSaveManager[] managers = FindObjectsOfType<AutoSaveManager>();
         if (managers.Length > 1)
         {
@@ -28,12 +28,13 @@ public class AutoSaveManager : MonoBehaviour
         UpdateDebugUI();
     }
 
-    public void OnCourseCleared(int clearedStage)
+    // ã‚³ãƒ¼ã‚¹ã‚¯ãƒªã‚¢æ™‚ã«å‘¼ã¶
+    public void OnCourseCleared(int stage)
     {
-        SaveLastClearedStage(clearedStage);
-        lastClearedStage = clearedStage;
+        SaveLastClearedStage(stage);
+        lastClearedStage = stage;
         UpdateDebugUI();
-        Debug.Log("Course cleared. Stage " + clearedStage + " saved.");
+        Debug.Log("Course cleared. Stage " + stage + " saved.");
     }
 
     private void SaveLastClearedStage(int stage)
@@ -63,7 +64,7 @@ public class AutoSaveManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        // PlayerPrefs‚É•Û‘¶Ï‚İ‚È‚Ì‚Å’Ç‰Áˆ—•s—v
+        // PlayerPrefsã«ä¿å­˜æ¸ˆã¿ãªã®ã§è¿½åŠ å‡¦ç†ä¸è¦
     }
 
     private void ShowSettingsScreen()
