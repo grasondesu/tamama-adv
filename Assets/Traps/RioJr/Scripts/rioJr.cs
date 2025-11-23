@@ -26,6 +26,8 @@ public class rioJr : MonoBehaviour
     }
     private void show()
     {
+        if (_player == null) return;   // ← プレイヤーがデストロイされた時に参照しないようにする。
+
         if (_player.transform.position.x >= _posx && _player.transform.position.y >= _posy)
         {
             rio.gameObject.SetActive(true);

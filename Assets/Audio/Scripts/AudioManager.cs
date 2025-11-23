@@ -8,13 +8,16 @@ public class SceneBGM
     public string sceneName;
     public AudioClip clip;
     public bool loop = true;
+
+    [Range(0f, 1f)]
+    public float volume = 1f; // ★ シーンごとの音量
 }
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("シーンごとのBGM")]
+    [Header("シーンごとのBGM設定")]
     public List<SceneBGM> sceneBGMs = new List<SceneBGM>();
 
     [Header("特別BGM")]
@@ -70,11 +73,14 @@ public class AudioManager : MonoBehaviour
             StopBGM();
     }
 
-    #region === BGM ===
-    public void PlayBGM(AudioClip clip, bool loop = true)
+    // ======================
+    // === BGM 再生関連 ===
+    // ======================
+    public void PlayBGM(AudioClip clip, bool loop = true, float volume = 1f)
     {
         if (!bgmEnabled || clip == null) return;
 
+        // 同じBGMなら再生し直さない
         if (bgmSource.clip == clip)
         {
             if (!bgmSource.isPlaying)
@@ -84,6 +90,7 @@ public class AudioManager : MonoBehaviour
 
         bgmSource.clip = clip;
         bgmSource.loop = loop;
+        bgmSource.volume = Mathf.Clamp01(volume); // ★ 音量反映
         bgmSource.Play();
     }
 
@@ -98,14 +105,16 @@ public class AudioManager : MonoBehaviour
     public void PlayBGMForCurrentScene()
     {
         string sceneName = SceneManager.GetActiveScene().name;
+
         foreach (var sb in sceneBGMs)
         {
             if (sb.sceneName == sceneName && sb.clip != null)
             {
-                PlayBGM(sb.clip, sb.loop);
+                PlayBGM(sb.clip, sb.loop, sb.volume); // ★ 音量を反映
                 return;
             }
         }
+
         StopBGM();
     }
 
@@ -113,7 +122,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!bgmEnabled) return;
         if (gameClearBGM != null)
-            PlayBGM(gameClearBGM, loop: false);
+            PlayBGM(gameClearBGM, loop: false, volume: 1f);
         else
             Debug.LogWarning("⚠️ GameClearBGM が設定されていません");
     }
@@ -122,16 +131,18 @@ public class AudioManager : MonoBehaviour
     {
         if (!bgmEnabled) return;
         if (gameOverBGM != null)
-            PlayBGM(gameOverBGM, loop: false);
+            PlayBGM(gameOverBGM, loop: false, volume: 1f);
         else
             Debug.LogWarning("⚠️ GameOverBGM が設定されていません");
     }
-    #endregion
 
-    #region === SE ===
+    // ======================
+    // === SE 関連 ===
+    // ======================
     public void PlayDashSE()
     {
         if (!seEnabled) return;
+
         if (!dashSeSource.isPlaying)
         {
             dashSeSource.clip = dashSE;
@@ -146,8 +157,17 @@ public class AudioManager : MonoBehaviour
             dashSeSource.Stop();
     }
 
-    public void PlayJumpSE() { if (seEnabled) jumpSeSource.PlayOneShot(jumpSE); }
-    public void PlayHitSE() { if (seEnabled) hitSeSource.PlayOneShot(hitSE); }
+    public void PlayJumpSE()
+    {
+        if (seEnabled)
+            jumpSeSource.PlayOneShot(jumpSE);
+    }
+
+    public void PlayHitSE()
+    {
+        if (seEnabled)
+            hitSeSource.PlayOneShot(hitSE);
+    }
 
     public void StopAllSE()
     {
@@ -155,9 +175,10 @@ public class AudioManager : MonoBehaviour
         jumpSeSource.Stop();
         hitSeSource.Stop();
     }
-    #endregion
 
-    #region === ON/OFF ===
+    // ==========================
+    // === ON / OFF 設定保存 ===
+    // ==========================
     public void SetBgmEnabled(bool enabled)
     {
         bgmEnabled = enabled;
@@ -179,10 +200,4 @@ public class AudioManager : MonoBehaviour
         if (!enabled)
             StopAllSE();
     }
-    #endregion
 }
-
-
-
-
-
