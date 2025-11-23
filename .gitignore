@@ -23,3 +23,6 @@
 .DS_Store
 Thumbs.db
 Library/
+
+# Unity のユーザー設定（個人用）
+UserSettings/
