@@ -33,6 +33,8 @@ public class rock : MonoBehaviour
 
     private void go()
     {
+        if (_player == null) return;   // ← プレイヤーがデストロイされた時に参照しないようにする。
+
         if (!_hasLaunched && _player.transform.position.x >= _posx && _player.transform.position.y >= _posy)
         {
             // 角度から方向ベクトルを作成！！
