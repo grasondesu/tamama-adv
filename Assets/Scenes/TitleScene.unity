@@ -1738,6 +1738,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3407195676755601607, guid: e87fc58fb89db4e9cba038f74d5bad14, type: 3}
+      propertyPath: UISE
+      value: 
+      objectReference: {fileID: 8300000, guid: d2a3568acf62649d398baeac7fa24173, type: 3}
+    - target: {fileID: 3407195676755601607, guid: e87fc58fb89db4e9cba038f74d5bad14, type: 3}
       propertyPath: sceneBGMs.Array.data[9].clip
       value: 
       objectReference: {fileID: 8300000, guid: 91301f2b82cfa4b77943a0355ea025ee, type: 3}

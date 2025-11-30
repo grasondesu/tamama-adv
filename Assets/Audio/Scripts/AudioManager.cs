@@ -28,11 +28,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip dashSE;
     public AudioClip jumpSE;
     public AudioClip hitSE;
+    public AudioClip UISE;
 
     private AudioSource bgmSource;
     private AudioSource dashSeSource;
     private AudioSource jumpSeSource;
     private AudioSource hitSeSource;
+    private AudioSource UISeSource;
 
     private bool bgmEnabled = true;
     private bool seEnabled = true;
@@ -48,6 +50,7 @@ public class AudioManager : MonoBehaviour
             dashSeSource = transform.Find("DashSESource").GetComponent<AudioSource>();
             jumpSeSource = transform.Find("JumpSESource").GetComponent<AudioSource>();
             hitSeSource = transform.Find("HitSESource").GetComponent<AudioSource>();
+            UISeSource = transform.Find("UISESource").GetComponent<AudioSource>();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -174,6 +177,7 @@ public class AudioManager : MonoBehaviour
         dashSeSource.Stop();
         jumpSeSource.Stop();
         hitSeSource.Stop();
+        UISeSource.Stop();
     }
 
     // ==========================
