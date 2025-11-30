@@ -47,6 +47,11 @@ public class SoundSettingManager : MonoBehaviour
     {
         isSeOn = !isSeOn;
         AudioManager.Instance.SetSeEnabled(isSeOn);
+        UIButtonSound[] allButtons = FindObjectsOfType<UIButtonSound>(true);
+        foreach (var btn in allButtons)
+        {
+            btn.SetSeEnabled(isSeOn);
+        }
         UpdateSeVisual();
     }
 
