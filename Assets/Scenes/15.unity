@@ -5384,6 +5384,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 681652704938249379, guid: 5761568eccfde478b81369a812a81c03, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2313196582185646235, guid: 5761568eccfde478b81369a812a81c03, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5401,6 +5405,10 @@ PrefabInstance:
       value: OnRightUp
       objectReference: {fileID: 0}
     - target: {fileID: 2530934126252731018, guid: 5761568eccfde478b81369a812a81c03, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3044127027351391816, guid: 5761568eccfde478b81369a812a81c03, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -5431,6 +5439,10 @@ PrefabInstance:
     - target: {fileID: 6432527201029540023, guid: 5761568eccfde478b81369a812a81c03, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnJumpUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537729119764930287, guid: 5761568eccfde478b81369a812a81c03, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6707672758778025888, guid: 5761568eccfde478b81369a812a81c03, type: 3}
       propertyPath: m_Name
@@ -6218,3 +6230,4 @@ SceneRoots:
   - {fileID: 850195471}
   - {fileID: 1059600633}
   - {fileID: 813229309}
+  - {fileID: 278063823}

@@ -3,11 +3,16 @@ using UnityEngine.UI;
 
 public class UIButtonSound : MonoBehaviour
 {
+    public static UIButtonSound Instance;
+
     [Header("常駐AudioSource")]
     [SerializeField] private AudioSource audioSource;
 
     [Header("クリックSE")]
     [SerializeField] private AudioClip clickSE;
+
+    [Header("SE有効/無効")]
+    [SerializeField] private bool seEnabled = true; // 初期はON
 
     private void Awake()
     {
@@ -16,6 +21,9 @@ public class UIButtonSound : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        // PlayerPrefsから前回の設定を読み込む
+        seEnabled = PlayerPrefs.GetInt("SE_ON", 1) == 1;
     }
 
     /// <summary>
@@ -23,6 +31,8 @@ public class UIButtonSound : MonoBehaviour
     /// </summary>
     public void PlayClickSE()
     {
+        if (!seEnabled) return; // SE無効なら何もしない
+
         if (audioSource != null && clickSE != null)
         {
             // 無効でも有効化して再生
@@ -43,5 +53,15 @@ public class UIButtonSound : MonoBehaviour
         {
             button.onClick.AddListener(PlayClickSE);
         }
+    }
+
+    /// <summary>
+    /// SEの有効/無効を切り替える
+    /// </summary>
+    public void SetSeEnabled(bool enabled)
+    {
+        seEnabled = enabled;
+        PlayerPrefs.SetInt("SE_ON", enabled ? 1 : 0);
+        PlayerPrefs.Save();
     }
 }
