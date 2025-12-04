@@ -10,6 +10,7 @@ public class MeteoController : MonoBehaviour
     [Header("衝突判定")]
     [SerializeField] private string groundTag = "Floor";
     [SerializeField] private string playerTag = "Player";
+    [SerializeField] private string enemyTag = "Enemy";
 
     [Header("破壊対象のオブジェクト名リスト")]
     [SerializeField] private List<string> destroyObjectNames;
@@ -29,7 +30,7 @@ public class MeteoController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 床またはプレイヤーに衝突したら破壊
-        if (collision.gameObject.CompareTag(groundTag) || collision.gameObject.CompareTag(playerTag))
+        if (collision.gameObject.CompareTag(groundTag) || collision.gameObject.CompareTag(playerTag) || collision.gameObject.CompareTag(enemyTag))
         {
             Destroy(gameObject);
             return;
