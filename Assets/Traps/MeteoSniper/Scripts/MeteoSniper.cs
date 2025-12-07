@@ -48,7 +48,7 @@ public class MeteoSniper : MonoBehaviour
             Rigidbody2D rb = meteor.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.velocity = dir * shootForce;
+                rb.linearVelocity = dir * shootForce;
             }
         }
     }

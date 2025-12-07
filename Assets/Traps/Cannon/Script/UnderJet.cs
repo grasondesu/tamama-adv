@@ -67,7 +67,7 @@ public class UnderJet : MonoBehaviour
         {
             float rad = _angleDegree * Mathf.Deg2Rad;
             Vector2 direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-            _rb.velocity = direction.normalized * _launchSpeed;
+            _rb.linearVelocity = direction.normalized * _launchSpeed;
             _hasLaunched = true;
         }
     }

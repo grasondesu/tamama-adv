@@ -92,6 +92,6 @@ public class CannonTwoShot : MonoBehaviour
         float rad = _angleDegree * Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
 
-        rb.velocity = dir * _launchSpeed;
+        rb.linearVelocity = dir * _launchSpeed;
     }
 }

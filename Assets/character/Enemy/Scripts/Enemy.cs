@@ -32,7 +32,7 @@ public class WingPoopMan : MonoBehaviour
     // 左右移動
     private void Move()
     {
-        rigidbody2D.velocity = new Vector2(moveDirection.x * moveSpeed, rigidbody2D.velocity.y);
+        rigidbody2D.linearVelocity = new Vector2(moveDirection.x * moveSpeed, rigidbody2D.linearVelocity.y);
     }
 
     // 壁に当たったら方向を反転
@@ -63,7 +63,7 @@ public class WingPoopMan : MonoBehaviour
         if ((collision.gameObject.tag == "Floor" || collision.gameObject.tag == "InvisibleFloor") && !jumpFlg)
         {
             // Y方向の速度をリセットしてからジャンプ
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0f);
+            rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, 0f);
             rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
 
             jumpFlg = true; // この接地でジャンプ済みにする

@@ -23,7 +23,7 @@ public class SpikeProjectile : MonoBehaviour
         if (rb != null)
         {
             rb.isKinematic = true; // 最初は物理無効にしてスクリプトで動かす
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
     }
@@ -52,7 +52,7 @@ public class SpikeProjectile : MonoBehaviour
                 if (rb != null)
                 {
                     rb.isKinematic = false;
-                    rb.velocity = new Vector2(initialVelocity.x, initialVelocity.y + gravity * timer);
+                    rb.linearVelocity = new Vector2(initialVelocity.x, initialVelocity.y + gravity * timer);
                 }
             }
         }

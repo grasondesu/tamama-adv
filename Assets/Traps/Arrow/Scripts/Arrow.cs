@@ -42,7 +42,7 @@ public class Arrow : MonoBehaviour
             Vector2 direction = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
 
             // velocityで初速セット！
-            _rb.velocity = direction.normalized * _launchSpeed;
+            _rb.linearVelocity = direction.normalized * _launchSpeed;
             _hasLaunched = true;
         }
     }
