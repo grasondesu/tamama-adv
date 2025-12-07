@@ -1332,6 +1332,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5761568eccfde478b81369a812a81c03, type: 3}
+--- !u!1 &557617001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6238611130488407356, guid: 5761568eccfde478b81369a812a81c03, type: 3}
+  m_PrefabInstance: {fileID: 557617000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &576241681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3719,6 +3724,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3288306685369477424, guid: 19a18e687e0a44240bc0202f123dac41, type: 3}
+      propertyPath: settingsScreen
+      value: 
+      objectReference: {fileID: 557617001}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
