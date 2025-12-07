@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector2 direction)
     {
-        rigidbody2D.velocity = new Vector2(direction.x * moveSpeed, rigidbody2D.velocity.y);
+        rigidbody2D.linearVelocity = new Vector2(direction.x * moveSpeed, rigidbody2D.linearVelocity.y);
         anim.SetBool("Run", Mathf.Abs(direction.x) > 0.1f);
 
         if (Mathf.Abs(direction.x) > 0.1f && !jumpFlg)
@@ -136,18 +136,18 @@ public class PlayerController : MonoBehaviour
         anim.enabled = false;
         GetComponent<PlayerInput>().enabled = false;
 
-        Vector2 startVelocity = rigidbody2D.velocity;
+        Vector2 startVelocity = rigidbody2D.linearVelocity;
         float duration = 0.1f;
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
-            rigidbody2D.velocity = Vector2.Lerp(startVelocity, Vector2.zero, elapsed / duration);
+            rigidbody2D.linearVelocity = Vector2.Lerp(startVelocity, Vector2.zero, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        rigidbody2D.velocity = Vector2.zero;
+        rigidbody2D.linearVelocity = Vector2.zero;
         rigidbody2D.isKinematic = true;
     }
 }

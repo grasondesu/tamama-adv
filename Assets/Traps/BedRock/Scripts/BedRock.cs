@@ -138,7 +138,7 @@ public class RockMovement : MonoBehaviour
     {
         if (rb != null)
         {
-            rb.velocity = new Vector2(0, -fallSpeed); // 一定速度で真下に落ちる
+            rb.linearVelocity = new Vector2(0, -fallSpeed); // 一定速度で真下に落ちる
         }
     }
 }

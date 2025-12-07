@@ -31,7 +31,7 @@ public class FireBall : MonoBehaviour
         while (isLooping)
         {
             // 上向きにジャンプ
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
             // 任意のホバリング時間がある場合

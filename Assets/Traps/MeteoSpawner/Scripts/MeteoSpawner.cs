@@ -58,7 +58,7 @@ public class MeteoSpawner : MonoBehaviour
         Rigidbody2D rb = meteor.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = new Vector2(targetVelocity, 0f); // 横方向だけ速度をセット
+            rb.linearVelocity = new Vector2(targetVelocity, 0f); // 横方向だけ速度をセット
         }
 
         heightIndex = (heightIndex + 1) % spawnHeights.Length;
