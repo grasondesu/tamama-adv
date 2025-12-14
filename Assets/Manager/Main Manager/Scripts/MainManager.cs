@@ -4,6 +4,11 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 
+    // ★追記: 現在のステージ番号 (1から始まる)
+    [Header("ステージ番号")]
+    [Tooltip("現在このシーンが対応するステージ番号 (1, 2, 3...)")]
+    [SerializeField] private int currentStageIndex = 1; 
+    
     [Header("プレイヤー")]
     [SerializeField] private GameObject player;
 
@@ -54,6 +59,10 @@ public class MainManager : MonoBehaviour
 
         // GameClear BGM 再生
         AudioManager.Instance?.PlayGameClearBGM();
+        
+        // ★修正点: ステージ解放処理を呼び出す
+        // StageSelectManager に、クリアしたステージ番号を通知する
+        StageSelectManager.UnlockNextStage(currentStageIndex);
 
         if (gameClearUI != null)
             gameClearUI.SetActive(true);

@@ -258,7 +258,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1222685969255435270, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 7.77
       objectReference: {fileID: 0}
     - target: {fileID: 1222685969255435270, guid: 98b82b6b6eab04b22a0b02bfff8a233d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4218,6 +4218,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5446653552707235353, guid: 8d870f1e9d7a3456ebcf8e344ffd23ed, type: 3}
+      propertyPath: mainMenuSceneName
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446653552707235353, guid: 8d870f1e9d7a3456ebcf8e344ffd23ed, type: 3}
       propertyPath: stageScenes.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -4731,6 +4735,10 @@ PrefabInstance:
       propertyPath: gameClearUI
       value: 
       objectReference: {fileID: 898920019}
+    - target: {fileID: -3049300155562466182, guid: e054faa27b05a4f85bd6a30f088f1565, type: 3}
+      propertyPath: currentStageIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4713159400318079900, guid: e054faa27b05a4f85bd6a30f088f1565, type: 3}
       propertyPath: m_Name
       value: MainManager
