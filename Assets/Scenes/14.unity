@@ -968,6 +968,10 @@ PrefabInstance:
       propertyPath: gameClearUI
       value: 
       objectReference: {fileID: 55865221}
+    - target: {fileID: -3049300155562466182, guid: e054faa27b05a4f85bd6a30f088f1565, type: 3}
+      propertyPath: currentStageIndex
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4713159400318079900, guid: e054faa27b05a4f85bd6a30f088f1565, type: 3}
       propertyPath: m_Name
       value: MainManager

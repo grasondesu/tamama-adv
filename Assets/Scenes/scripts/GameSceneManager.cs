@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour
 {
+    [Header("メインメニューのシーン名")]
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
+
     // 現在のステージ番号を取得
     int GetCurrentStageIndex()
     {
@@ -18,7 +21,14 @@ public class GameSceneManager : MonoBehaviour
     // メインメニューへ戻る（0番を MainMenu にしておく）
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene(1);
+        if (string.IsNullOrEmpty(mainMenuSceneName))
+        {
+            Debug.LogError("メインメニューのシーン名が設定されていません。Inspectorで設定してください。");
+            return;
+        }
+        
+        // ★修正: シーン名（文字列）を指定してロード
+        SceneManager.LoadScene(mainMenuSceneName); 
     }
 
     // 次のステージへ
