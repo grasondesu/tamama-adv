@@ -39,7 +39,8 @@ public class AdManager : MonoBehaviour
         {
             AdRequest.TestDeviceSimulator, // シミュレーター用
             // --- ここにあなたのiPhoneのテストデバイスID（英数字32桁程度）を貼り付けてください ---
-            "cd266182677e45fc41e093da42f881be" 
+            "cd266182677e45fc41e093da42f881be" ,
+            "4013df402dc5d1c85c0ca219b13c7021"
         };
 
         RequestConfiguration requestConfiguration = new RequestConfiguration
