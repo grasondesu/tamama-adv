@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using GoogleMobileAds.Api;
+using System.Collections.Generic;
 
 public class AdManager : MonoBehaviour
 {
@@ -10,12 +11,17 @@ public class AdManager : MonoBehaviour
     private BannerView _bannerView;
     private InterstitialAd _interstitialAd;
 
+    // --- ID設定（ドキュメント準拠のテストID） ---
 #if UNITY_ANDROID
     private string _bannerAdId = "ca-app-pub-3940256099942544/6300978111";
     private string _interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
 #elif UNITY_IPHONE
+    // iOS用のサンプル広告ユニットID（ドキュメント参照）
     private string _bannerAdId = "ca-app-pub-3940256099942544/2934735716";
-    private string _interstitialAdId = "ca-app-pub-3940256099942544/4414689104";
+    private string _interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
+#else
+    private string _bannerAdId = "unused";
+    private string _interstitialAdId = "unused";
 #endif
 
     void Awake()
@@ -32,25 +38,34 @@ public class AdManager : MonoBehaviour
     }
 
     void Start()
-{
-    // テストデバイスIDのリストを作成（AdMob画面やログで確認したIDを入れる）
-    RequestConfiguration requestConfiguration = new RequestConfiguration
     {
-        TestDeviceIds = new System.Collections.Generic.List<string> 
-        { 
-            "A5093476-7B36-4431-B0E7-A38CE3519942" // ここに自分の端末IDを貼り付ける
-        }
-    };
-    MobileAds.SetRequestConfiguration(requestConfiguration);
+        // 【重要】ドキュメントに基づいたテストデバイスの設定
+        // iOS実機で表示させるには、ここのリストにIDを追加するのが最も確実です
+        List<string> testDeviceIds = new List<string>
+        {
+            AdRequest.TestDeviceSimulator, // シミュレーター用
+            // --- ここにあなたのiPhoneのテストデバイスID（英数字32桁程度）を貼り付けてください ---
+            "cd266182677e45fc41e093da42f881be" 
+        };
 
-    MobileAds.Initialize(initStatus =>
-    {
-        LoadBannerAd();
-        LoadInterstitialAd();
-    });
-}
+        RequestConfiguration requestConfiguration = new RequestConfiguration
+        {
+            TestDeviceIds = testDeviceIds
+        };
+        MobileAds.SetRequestConfiguration(requestConfiguration);
 
-    // --- バナー広告（変更なし） ---
+        // 初期化
+        MobileAds.Initialize(initStatus =>
+        {
+            Debug.Log("AdMob初期化完了");
+            LoadBannerAd();
+            LoadInterstitialAd();
+        });
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // --- バナー広告 ---
     private void LoadBannerAd()
     {
         if (_bannerView != null) _bannerView.Destroy();
@@ -64,62 +79,50 @@ public class AdManager : MonoBehaviour
     private void CheckBannerVisibility()
     {
         if (_bannerView == null) return;
+        // Build SettingsのIndex 0のシーンのみ表示
         if (SceneManager.GetActiveScene().buildIndex == 0) _bannerView.Show();
         else _bannerView.Hide();
     }
 
-    // --- インタースティシャル広告（強化版） ---
+    // --- インタースティシャル広告 ---
     public void LoadInterstitialAd()
     {
-        // 既存の広告があれば破棄して新しくロードする
-        if (_interstitialAd != null)
-        {
-            _interstitialAd.Destroy();
-            _interstitialAd = null;
-        }
+        if (_interstitialAd != null) { _interstitialAd.Destroy(); _interstitialAd = null; }
 
-        Debug.Log("[AdLog] インタースティシャル広告をロード開始...");
+        Debug.Log("インタースティシャル広告ロード開始...");
         InterstitialAd.Load(_interstitialAdId, new AdRequest(), (ad, error) =>
         {
-            if (error != null)
-            {
-                Debug.LogError("[AdLog] ロード失敗: " + error.GetMessage());
-                return;
-            }
+            if (error != null) { Debug.LogError("ロード失敗: " + error.GetMessage()); return; }
             _interstitialAd = ad;
-            Debug.Log("[AdLog] ロード成功！準備完了。");
+
+            _interstitialAd.OnAdFullScreenContentClosed += () => {
+                Debug.Log("広告が閉じられました");
+                LoadInterstitialAd(); // 次回分をロード
+            };
         });
     }
 
     public void ShowInterstitialOnGameOver()
     {
         gameOverCount++;
-        Debug.Log($"[AdLog] ゲームオーバー回数: {gameOverCount}");
-
-        // 【ここがポイント！】
-        // 7回目の直前（6回目）で、広告がもし消えていても大丈夫なように再ロードをかける
-        if (gameOverCount % 7 == 6)
-        {
-            Debug.Log("[AdLog] 次回(7回目)に向けて広告をリフレッシュします。");
-            LoadInterstitialAd();
-        }
-
+        // 7回に1回表示
         if (gameOverCount % 7 == 0)
         {
             if (_interstitialAd != null && _interstitialAd.CanShowAd())
             {
-                Debug.Log("[AdLog] 7回目：広告を表示します。");
+                Debug.Log("インタースティシャル表示実行");
                 _interstitialAd.Show();
-                
-                // 表示が終わった直後に「次」をロードしておく
-                LoadInterstitialAd();
             }
             else
             {
-                // 万が一準備が間に合わなかった場合、8回目でリベンジするためにロード
-                Debug.LogWarning("[AdLog] 7回目ですが準備が間に合いませんでした。再ロードします。");
+                Debug.Log("広告の準備ができていません。ロードを再試行します。");
                 LoadInterstitialAd();
             }
+        }
+        // 6回目（次で表示）の時に最新の広告をロードしておく
+        else if (gameOverCount % 7 == 6)
+        {
+            LoadInterstitialAd();
         }
     }
 }
