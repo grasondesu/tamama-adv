@@ -8,20 +8,14 @@ public class AdManager : MonoBehaviour
     public static AdManager Instance;
 
     private int gameOverCount = 0;
-    private BannerView _bannerView;
     private InterstitialAd _interstitialAd;
 
     // --- ID設定（ドキュメント準拠のテストID） ---
 #if UNITY_ANDROID
-    private string _bannerAdId = "ca-app-pub-3940256099942544/6300978111";
     private string _interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
 #elif UNITY_IPHONE
     // iOS用のサンプル広告ユニットID（ドキュメント参照）
-    private string _bannerAdId = "ca-app-pub-3940256099942544/2934735716";
     private string _interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
-#else
-    private string _bannerAdId = "unused";
-    private string _interstitialAdId = "unused";
 #endif
 
     void Awake()
@@ -58,32 +52,11 @@ public class AdManager : MonoBehaviour
         MobileAds.Initialize(initStatus =>
         {
             Debug.Log("AdMob初期化完了");
-            LoadBannerAd();
             LoadInterstitialAd();
         });
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // --- バナー広告 ---
-    private void LoadBannerAd()
-    {
-        if (_bannerView != null) _bannerView.Destroy();
-        _bannerView = new BannerView(_bannerAdId, AdSize.Banner, AdPosition.Bottom);
-        _bannerView.OnBannerAdLoaded += () => { CheckBannerVisibility(); };
-        _bannerView.LoadAd(new AdRequest());
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) { CheckBannerVisibility(); }
-
-    private void CheckBannerVisibility()
-    {
-        if (_bannerView == null) return;
-        // Build SettingsのIndex 0のシーンのみ表示
-        if (SceneManager.GetActiveScene().buildIndex == 0) _bannerView.Show();
-        else _bannerView.Hide();
-    }
-
+   
     // --- インタースティシャル広告 ---
     public void LoadInterstitialAd()
     {
