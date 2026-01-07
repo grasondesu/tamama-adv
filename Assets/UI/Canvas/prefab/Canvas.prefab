@@ -865,6 +865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   clickSE: {fileID: 8300000, guid: d2a3568acf62649d398baeac7fa24173, type: 3}
+  seEnabled: 1
 --- !u!1 &6731989480237444120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,7 +1767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5549930296623673178, guid: 1b8acc6afe45b43fc9f0f67d8b3ec568, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 64
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5549930296623673178, guid: 1b8acc6afe45b43fc9f0f67d8b3ec568, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -105,6 +105,10 @@ public class PlayerController : MonoBehaviour
         // ヒットSE再生 & DashSE停止
         AudioManager.Instance?.PlayHitSE();
         AudioManager.Instance?.StopDashSE();
+　　　　if (AdManager.Instance != null)
+   　　　 {
+        AdManager.Instance.ShowInterstitialOnGameOver();
+   　　　 }
 
         // GameOver UI と BGM 再生
         MainManager.Instance.ShowGameOverUI();
